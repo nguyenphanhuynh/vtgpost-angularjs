@@ -2,7 +2,7 @@ var TableDatatablesManaged = function () {
 
     var initTable1 = function () {
 
-        var table = $('#sample_1');
+        var table = $('#tbl_employees');
 
         // begin first table
         table.dataTable({
@@ -41,7 +41,7 @@ var TableDatatablesManaged = function () {
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
             "columnDefs": [ {
-                "targets": 0,
+                "targets": [0, 1, 2, 3, 4, 5, 6],
                 "orderable": false,
                 "searchable": false
             }],
@@ -55,10 +55,10 @@ var TableDatatablesManaged = function () {
             "pagingType": "bootstrap_full_number",
             "columnDefs": [{  // set default column settings
                 'orderable': false,
-                'targets': [0]
+                'targets': [0, 1, 2, 3, 4, 5, 6]
             }, {
                 "searchable": false,
-                "targets": [0]
+                "targets": [0, 1, 2, 3, 4, 5, 6]
             }],
             "order": [
                 [1, "asc"]

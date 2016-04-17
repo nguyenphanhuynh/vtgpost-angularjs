@@ -1,5 +1,5 @@
 angular.module('VTGApp').controller('EmployeeController', function ($rootScope, $scope, $http, $timeout) {
-    $scope.$on('$viewContentLoaded', function() {
+    $scope.$on('$viewContentLoaded', function () {
         // initialize core components
         App.initAjax();
     });
@@ -7,12 +7,12 @@ angular.module('VTGApp').controller('EmployeeController', function ($rootScope, 
     $scope.employees = [];
     $scope.getEmployees = function () {
         $scope.employees = [
-            {'id': '1', 'name': 'Nguyễn Văn An', 'username': 'anguyen', 'status': 'actived'},
-            {'id': '2', 'name': 'Duyen', 'username': 'Duyen', 'status': 'actived'},
-            {'id': '3', 'name': 'hiền', 'username': 'hiền', 'status': 'actived'},
-            {'id': '4', 'name': 'Ly', 'username': 'Ly', 'status': 'actived'},
-            {'id': '5', 'name': 'Nguyễn Thị Hồng', 'username': 'Nguyễn Thị Hồng', 'status': 'actived'},
-            {'id': '6', 'name': 'Nguyễn Quốc Đạt', 'username': 'Nguyễn Quốc Đạt', 'status': 'actived'},
+            {'id': '1', 'name': 'Nguyễn Văn An', 'username': 'anguyen', 'active': false},
+            {'id': '2', 'name': 'Duyen', 'username': 'Duyen', 'active': false},
+            {'id': '3', 'name': 'hiền', 'username': 'hiền', 'active': true},
+            {'id': '4', 'name': 'Ly', 'username': 'Ly', 'active': true},
+            {'id': '5', 'name': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
+            {'id': '6', 'name': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
         ];
     };
 
