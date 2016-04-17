@@ -171,7 +171,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
 
         .state('employeelist', {
             url: "/employee_list.html",
-            templateUrl: "views/employee_list.html",
+            templateUrl: "views/employee/employee_list.html",
             data: {pageTitle: 'Danh Sách Nhân Viên'},
             controller: "EmployeeController",
             resolve: {
@@ -187,6 +187,26 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
 
                             'assets/pages/scripts/table-datatables-managed.min.js',
                             'js/controllers/EmployeeController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('employeegroup', {
+            url: "/employee_group.html",
+            templateUrl: "views/employee/manage_employee_group.html",
+            data: {pageTitle: 'User Groups - Danh Sách Nhóm'},
+            controller: "EmployeeGroupController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/datatables/datatables.min.css',
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+
+                            'js/controllers/EmployeeGroupController.js',
                         ]
                     });
                 }]
