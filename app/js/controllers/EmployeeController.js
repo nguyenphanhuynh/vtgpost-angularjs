@@ -20,4 +20,14 @@ angular.module('VTGApp').controller('EmployeeController', function ($rootScope, 
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;
     $rootScope.settings.layout.pageSidebarClosed = false;
+
+    $scope.delete = function (id, username) {
+        bootbox.confirm("Are you sure to delete user " + username + "?", function (result) {
+            if (result) {
+                alert('Deleting id: ' + id);
+            } else {
+                // do nothing
+            }
+        });
+    }
 });

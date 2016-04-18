@@ -182,10 +182,10 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         files: [
                             'assets/global/plugins/datatables/datatables.min.css',
                             'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-
                             'assets/global/plugins/datatables/datatables.all.min.js',
-
                             'assets/pages/scripts/table-datatables-managed.min.js',
+                            'assets/global/plugins/bootbox/bootbox.min.js',
+                            'assets/pages/scripts/ui-notific8.min.js',
                             'js/controllers/EmployeeController.js',
                         ]
                     });
