@@ -4,8 +4,8 @@ Metronic AngularJS App Main Script
 
 /* Metronic App */
 var VTGApp = angular.module("VTGApp", [
-    "ui.router", 
-    "ui.bootstrap", 
+    "ui.router",
+    "ui.bootstrap",
     "oc.lazyLoad",
     "ngSanitize",
     'ngRoute'
