@@ -1,7 +1,6 @@
 angular.module('VTGApp').controller('EmployeeGroupController', function ($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
-        App.initAjax();
     });
 
     $scope.employee_groups = [];

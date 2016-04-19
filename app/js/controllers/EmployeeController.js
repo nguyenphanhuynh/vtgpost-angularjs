@@ -1,20 +1,10 @@
-angular.module('VTGApp').controller('EmployeeController', function ($rootScope, $scope, $http, $timeout) {
+var app = angular.module('VTGApp', ['ngRoute']);
+
+app.controller('EmployeeController', function ($rootScope, $scope, $http, $timeout, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
-        App.initAjax();
     });
-
-    $scope.employees = [];
-    $scope.getEmployees = function () {
-        $scope.employees = [
-            {'id': '1', 'name': 'Nguyễn Văn An', 'username': 'anguyen', 'active': false},
-            {'id': '2', 'name': 'Duyen', 'username': 'Duyen', 'active': false},
-            {'id': '3', 'name': 'hiền', 'username': 'hiền', 'active': true},
-            {'id': '4', 'name': 'Ly', 'username': 'Ly', 'active': true},
-            {'id': '5', 'name': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
-            {'id': '6', 'name': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
-        ];
-    };
+    $scope.employees = services.getEmployees();
 
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;
@@ -24,10 +14,32 @@ angular.module('VTGApp').controller('EmployeeController', function ($rootScope, 
     $scope.delete = function (id, username) {
         bootbox.confirm("Are you sure to delete user " + username + "?", function (result) {
             if (result) {
-                alert('Deleting id: ' + id);
+                services.deleteEmployee(id);
             } else {
                 // do nothing
             }
         });
     }
+});
+
+app.controller('EditEmployeeController', function ($rootScope, $scope, $location, $routeParams, services) {
+    $scope.$on('$viewContentLoaded', function () {
+        // initialize core components
+    });
+    var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
+    console.log($routeParams.employee_id);
+    $rootScope.title = (employee_id > -1) ? 'Edit Employee' : 'Add Employee';
+    $scope.buttonText = (employee_id > -1) ? 'Update Employee' : 'Add New Employee';
+
+    var employee = {};
+
+    $scope.saveEmploye = function (employee) {
+        $location.path('/');
+        if (employee_id <= -1) {
+            services.insertCustomer(employee);
+        }
+        else {
+            services.updateCustomer(employee_id, employee);
+        }
+    };
 });

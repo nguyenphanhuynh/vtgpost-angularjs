@@ -6,8 +6,9 @@ Metronic AngularJS App Main Script
 var VTGApp = angular.module("VTGApp", [
     "ui.router", 
     "ui.bootstrap", 
-    "oc.lazyLoad",  
-    "ngSanitize"
+    "oc.lazyLoad",
+    "ngSanitize",
+    'ngRoute'
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -169,7 +170,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
-        .state('employeelist', {
+        .state('employee_list', {
             url: "/employee_list.html",
             templateUrl: "views/employee/employee_list.html",
             data: {pageTitle: 'Danh Sách Nhân Viên'},
@@ -192,7 +193,29 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                 }]
             }
         })
-        .state('employeegroup', {
+
+        .state('employee_edit', {
+            url: "/edit-employee.html",
+            templateUrl: "views/employee/edit_employee.html",
+            data: {pageTitle: 'Thêm Nhân Viên Mới'},
+            controller: "EditEmployeeController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                            'assets/global/plugins/jquery-validation/js/additional-methods.min.js',
+                            'assets/pages/scripts/form-validation-edit-employee.js',
+                            'js/controllers/EmployeeController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+
+        .state('employee_group', {
             url: "/employee_group.html",
             templateUrl: "views/employee/manage_employee_group.html",
             data: {pageTitle: 'User Groups - Danh Sách Nhóm'},
