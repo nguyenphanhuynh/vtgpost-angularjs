@@ -8,17 +8,23 @@ VTGApp.service("services", ['$http', function ($http) {
     obj.getEmployees = function () {
         //return $http.get(serviceBase + 'Employees');
         return [
-            {'id': '1', 'name': 'Nguyễn Văn An', 'username': 'anguyen', 'active': false},
-            {'id': '2', 'name': 'Duyen', 'username': 'Duyen', 'active': false},
-            {'id': '3', 'name': 'hiền', 'username': 'hiền', 'active': true},
-            {'id': '4', 'name': 'Ly', 'username': 'Ly', 'active': true},
-            {'id': '5', 'name': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
-            {'id': '6', 'name': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
+            {'id': '1', 'fullname': 'Nguyễn Văn An', 'username': 'anguyen', 'active': true},
+            {'id': '2', 'fullname': 'Duyen', 'username': 'Duyen', 'active': false},
+            {'id': '3', 'fullname': 'hiền', 'username': 'hiền', 'active': true},
+            {'id': '4', 'fullname': 'Ly', 'username': 'Ly', 'active': true},
+            {'id': '5', 'fullname': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
+            {'id': '6', 'fullname': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
         ];
     };
     obj.getEmployee = function (EmployeeID) {
-        //return $http.get(serviceBase + 'Employee?id=' + EmployeeID);
-        return {'id': '1', 'name': 'Nguyễn Văn An', 'username': 'anguyen', 'active': false};
+        if (EmployeeID > -1) {
+            // find employee
+            //return $http.get(serviceBase + 'Employee?id=' + EmployeeID);
+            return {'id': '1', 'fullname': 'Nguyễn Văn An', 'username': 'anguyen', 'active': true};
+        } else {
+            // create new employee
+            return {'id': '', 'fullname': '', 'username': '', 'active': true};
+        }
     };
 
     obj.insertEmployee = function (Employee) {

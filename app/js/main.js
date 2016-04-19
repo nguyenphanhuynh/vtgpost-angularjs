@@ -206,7 +206,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                            'assets/global/plugins/jquery-validation/js/additional-methods.min.js',
+                            //'assets/global/plugins/jquery-validation/js/additional-methods.min.js',
                             'assets/pages/scripts/form-validation-edit-employee.js',
                             'js/controllers/EmployeeController.js',
                         ]

@@ -27,13 +27,19 @@ app.controller('EditEmployeeController', function ($rootScope, $scope, $location
         // initialize core components
     });
     var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
-    console.log($routeParams.employee_id);
+
     $rootScope.title = (employee_id > -1) ? 'Edit Employee' : 'Add Employee';
     $scope.buttonText = (employee_id > -1) ? 'Update Employee' : 'Add New Employee';
 
-    var employee = {};
+    var employee = services.getEmployee(employee_id);
 
-    $scope.saveEmploye = function (employee) {
+    $scope.employee = employee;
+
+    $scope.submit = function () {
+        alert($scope.employee.fullname);
+    };
+
+    $scope.saveEmployee = function (employee) {
         $location.path('/');
         if (employee_id <= -1) {
             services.insertCustomer(employee);
