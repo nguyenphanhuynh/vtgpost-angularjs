@@ -1,1 +1,165 @@
-update_employee_group
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#">Danh sách nhân viên </a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><a href="#">{{$state.current.data.pageTitle}}</a></li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered" ng-controller="UpdateEmployeeGroupController">
+    <div class="portlet-title">
+        <div class="caption font-green">
+            <i class="fa fa-user font-green"></i>
+            <span class="caption-subject bold uppercase"> {{$state.current.data.pageTitle}} </span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form"
+              class="form-horizontal"
+              name="form"
+              id="frm_update_employee_group"
+              ng-submit="submit()"
+              novalidate>
+            <input type="hidden"
+                   ng-model="employee.id"
+                   name="id"
+                   id="id"/>
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label"
+                                   for="fullname">Fullname (Họ tên)</label>
+                            <div class="col-md-7">
+                                <input type="text"
+                                       class="form-control"
+                                       ng-model="employee.fullname"
+                                       name="fullname"
+                                       id="fullname"
+                                       disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label"
+                                   for="username">Username (Tên đăng nhập)</label>
+                            <div class="col-md-7">
+                                <input type="text"
+                                       class="form-control"
+                                       ng-model="employee.username"
+                                       name="username"
+                                       id="username"
+                                       disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-users font-dark"></i>
+                                    <span class="caption-subject bold uppercase"> Các nhóm đã phân quyền </span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <table class="table table-striped table-bordered table-hover dataTable orange"
+                                       id="tbl_in">
+                                    <thead>
+                                    <tr>
+                                        <th width="30%"> Tên nhóm</th>
+                                        <th width="60%"> Ghi chú</th>
+                                        <th width="10%">Chọn</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="odd gradeX" ng-repeat="e in employee.group.in">
+                                        <td> {{e.name}}</td>
+                                        <td> {{e.note}}</td>
+                                        <td>
+                                            <input type="checkbox"
+                                                   value="{{e.id}}"
+                                                   check-list="selectedIn"/>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-users font-dark"></i>
+                                    <span class="caption-subject bold uppercase"> Các nhóm chưa phân quyền </span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <table class="table table-striped table-bordered table-hover dataTable orange"
+                                       id="tbl_not_in">
+                                    <thead>
+                                    <tr>
+                                        <th width="30%"> Tên nhóm</th>
+                                        <th width="60%"> Ghi chú</th>
+                                        <th width="10%">Chọn</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="odd gradeX" ng-repeat="e in employee.group.notIn">
+                                        <td> {{e.name}}</td>
+                                        <td> {{e.note}}</td>
+                                        <td>
+                                            <input type="checkbox"
+                                                   value="{{e.id}}"
+                                                   check-list="selectedNotIn"/>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit"
+                                class="btn green"
+                                ng-disabled="form.$invalid">Submit
+                        </button>
+                        <a href="#/employee-list.html"
+                           class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

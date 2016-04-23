@@ -29,15 +29,34 @@ VTGApp.service("services", ['$http', function ($http) {
         var tmpArr = this.getEmployees();
         var foundIndex = -1;
         angular.forEach(tmpArr, function (value, index) {
-            if(value.id == EmployeeID) {
+            if (value.id == EmployeeID) {
                 foundIndex = index;
             }
         });
-        if(foundIndex == -1 ) {
+        if (foundIndex == -1) {
             return {'id': '-1', 'fullname': '', 'username': '', 'active': true};
         } else {
             return tmpArr[foundIndex];
         }
+    };
+
+    /**
+     *
+     * @param EmployeeId
+     * @returns {{in: Array, notIn: Array}}
+     */
+    obj.getGroupOfEmployee = function (EmployeeId) {
+        // create fake data
+        var tmpArr = this.getEmployeeGroups();
+        var inArr = [];
+        var notInArr = [];
+        for (var i = 0; i < 3; i++) {
+            inArr.push(tmpArr[i]);
+        }
+        for (var i = 3; i < tmpArr.length; i++) {
+            notInArr.push(tmpArr[i]);
+        }
+        return {'in': inArr, 'notIn': notInArr};
     };
 
     /**
@@ -46,7 +65,6 @@ VTGApp.service("services", ['$http', function ($http) {
      * @returns {*}
      */
     obj.newEmployee = function (employee) {
-        console.log(JSON.stringify(employee));
         return {'success': true, 'message': ''};
         //return {'success': false, 'message': 'Demo error message'};
         //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
@@ -61,7 +79,6 @@ VTGApp.service("services", ['$http', function ($http) {
      * @returns {*}
      */
     obj.updateEmployee = function (id, employee) {
-        console.log(JSON.stringify(employee));
         return {'success': true, 'message': ''};
         //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
         //    return status.data;
@@ -73,7 +90,6 @@ VTGApp.service("services", ['$http', function ($http) {
      * @param id
      */
     obj.deleteEmployee = function (id) {
-        alert('delete ' + id);
         return {'success': true, 'message': ''};
         //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
         //    return status.data;
@@ -91,24 +107,28 @@ VTGApp.service("services", ['$http', function ($http) {
         return {'success': true, 'message': ''};
     };
 
+    /**
+     * Get all groups
+     * @returns {*[]}
+     */
     obj.getEmployeeGroups = function () {
         return [
-                {'id': '1', 'name': 'Manage Banner', 'note': 'Quản lý banner: thêm banner, chỉnh sửa banner'},
-                {'id': '2', 'name': 'Manage Bill', 'note': 'Quản lý vận đơn: nhập vận đơn, cập nhật vận đơn...'},
-                {'id': '3', 'name': 'Manage Customer', 'note': 'Quản lý thông tin khách hàng'},
-                {'id': '4', 'name': 'Manage Information', 'note': 'Quản lý thông tin chung'},
-                {
-                    'id': '5',
-                    'name': 'Manage News',
-                    'note': 'Quản lý tin tức: đăng tin mới, cập nhật trang chủ, trang giới thiệu...'
-                },
-                {
-                    'id': '6',
-                    'name': 'Manage User',
-                    'note': 'Quản lý tài khoản người dùng: tạo tài khoản mới, đổi mật khẩu, cấp quyền truy cập trang quản trị...'
-                },
+            {'id': '1', 'name': 'Manage Banner', 'note': 'Quản lý banner: thêm banner, chỉnh sửa banner'},
+            {'id': '2', 'name': 'Manage Bill', 'note': 'Quản lý vận đơn: nhập vận đơn, cập nhật vận đơn...'},
+            {'id': '3', 'name': 'Manage Customer', 'note': 'Quản lý thông tin khách hàng'},
+            {'id': '4', 'name': 'Manage Information', 'note': 'Quản lý thông tin chung'},
+            {
+                'id': '5',
+                'name': 'Manage News',
+                'note': 'Quản lý tin tức: đăng tin mới, cập nhật trang chủ, trang giới thiệu...'
+            },
+            {
+                'id': '6',
+                'name': 'Manage User',
+                'note': 'Quản lý tài khoản người dùng: tạo tài khoản mới, đổi mật khẩu, cấp quyền truy cập trang quản trị...'
+            },
 
-            ];
+        ];
     };
 
     return obj;

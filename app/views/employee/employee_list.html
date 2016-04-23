@@ -10,7 +10,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Danh sách nhân viên </a>
+            <a href="#">{{$state.current.data.pageTitle}} </a>
         </li>
     </ul>
 </div>
@@ -24,7 +24,7 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="fa fa-users font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Danh sách nhân viên </span>
+                        <span class="caption-subject bold uppercase"> {{$state.current.data.pageTitle}} </span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -70,7 +70,8 @@
                                 <a href="#/change-password.html?id={{e.id}}" class="btn btn-sm purple-sharp"> Đổi mật khẩu
                                     <i class="fa fa-key"></i>
                                 </a>
-                                <a href="javascript:;" ng-click="delete (e.id, e.username)" class="btn btn-sm red"> Xoá
+                                <a href="javascript:;" ng-click="delete (e.id, e.username, $index)"
+                                   class="btn btn-sm red"> Xoá
                                     <i class="fa fa-remove"></i>
                                 </a>
                             </td>

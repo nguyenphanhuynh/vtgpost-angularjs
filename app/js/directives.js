@@ -39,7 +39,7 @@ VTGApp.directive('ngSpinnerBar', ['$rootScope',
             }
         };
     }
-])
+]);
 
 // Handle global LINK click
 VTGApp.directive('a', function() {
@@ -96,25 +96,33 @@ VTGApp.directive("passwordVerify", function() {
     };
 });
 
-//VTGApp.directive('initSwitch', function () {
-//    return {
-//        scope: {
-//            switchVariable: '=' //this is how you define 2way binding with whatever is passed on the switch-variable attribute
-//        },
-//        link: function (scope, element, attr) {
-//            scope.$evalAsync(function () {
-//                //element.switch();
-//                console.log(element);
-//            });
-//
-//            element.on("change", function(){
-//                if(scope.switchVariable)
-//                    scope.switchVariable = !scope.switchVariable
-//                else
-//                    scope.switchVariable = true;
-//
-//                scope.$apply(); //I believe you need this to propagate the changes
-//            });
-//        }
-//    }
-//});
+VTGApp.directive('checkList', function () {
+    return {
+        scope: {
+            list: '=checkList',
+            value: '@'
+        },
+        link: function (scope, elem, attrs) {
+            var handler = function (setup) {
+                var checked = elem.prop('checked');
+                var index = scope.list.indexOf(scope.value);
+
+                if (checked && index == -1) {
+                    if (setup) elem.prop('checked', false);
+                    else scope.list.push(scope.value);
+                } else if (!checked && index != -1) {
+                    if (setup) elem.prop('checked', true);
+                    else scope.list.splice(index, 1);
+                }
+            };
+
+            var setupHandler = handler.bind(null, true);
+            var changeHandler = handler.bind(null, false);
+
+            elem.bind('change', function () {
+                scope.$apply(changeHandler);
+            });
+            scope.$watch('list', setupHandler, true);
+        }
+    };
+});

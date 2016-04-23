@@ -214,7 +214,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
         .state('change_password', {
             url: "/change-password.html",
             templateUrl: "views/employee/change_password.html",
-            data: {pageTitle: 'Change ssword - Đổi mật khẩu'},
+            data: {pageTitle: 'Change password - Đổi mật khẩu'},
             controller: "ChangePasswordEmployeeController",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -231,7 +231,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
         .state('manage_employee_group', {
             url: "/manage-employee-group.html",
             templateUrl: "views/employee/update_employee_group.html",
-            data: {pageTitle: 'Quản lý nhóm'},
+            data: {pageTitle: 'Quản lý nhóm - Phân quyền'},
             controller: "UpdateEmployeeGroupController",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -239,6 +239,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
+                            'assets/global/plugins/bootbox/bootbox.min.js',
                             'js/controllers/EmployeeGroupController.js',
                         ]
                     });
@@ -259,7 +260,6 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         files: [
                             'assets/global/plugins/datatables/datatables.min.css',
                             'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
-
                             'js/controllers/EmployeeGroupController.js',
                         ]
                     });
