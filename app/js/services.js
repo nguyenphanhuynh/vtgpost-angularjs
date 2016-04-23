@@ -5,6 +5,10 @@
 VTGApp.service("services", ['$http', function ($http) {
     var serviceBase = 'services/';
     var obj = {};
+    /**
+     * Get all employees
+     * @returns {*[]}
+     */
     obj.getEmployees = function () {
         //return $http.get(serviceBase + 'Employees');
         return [
@@ -16,34 +20,95 @@ VTGApp.service("services", ['$http', function ($http) {
             {'id': '6', 'fullname': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
         ];
     };
+    /**
+     * Find employee by ID
+     * @param EmployeeID
+     * @returns {{id: string, fullname: string, username: string, active: boolean}}
+     */
     obj.getEmployee = function (EmployeeID) {
-        if (EmployeeID > -1) {
-            // find employee
-            //return $http.get(serviceBase + 'Employee?id=' + EmployeeID);
-            return {'id': '1', 'fullname': 'Nguyễn Văn An', 'username': 'anguyen', 'active': true};
+        var tmpArr = this.getEmployees();
+        var foundIndex = -1;
+        angular.forEach(tmpArr, function (value, index) {
+            if(value.id == EmployeeID) {
+                foundIndex = index;
+            }
+        });
+        if(foundIndex == -1 ) {
+            return {'id': '-1', 'fullname': '', 'username': '', 'active': true};
         } else {
-            // create new employee
-            return {'id': '', 'fullname': '', 'username': '', 'active': true};
+            return tmpArr[foundIndex];
         }
     };
 
-    obj.insertEmployee = function (Employee) {
-        return $http.post(serviceBase + 'insertEmployee', Employee).then(function (results) {
-            return results;
-        });
+    /**
+     * Create new employee
+     * @param employee
+     * @returns {*}
+     */
+    obj.newEmployee = function (employee) {
+        console.log(JSON.stringify(employee));
+        return {'success': true, 'message': ''};
+        //return {'success': false, 'message': 'Demo error message'};
+        //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
+        //    return results;
+        //});
     };
 
-    obj.updateEmployee = function (id, Employee) {
-        return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: Employee}).then(function (status) {
-            return status.data;
-        });
+    /**
+     * Update an employee
+     * @param id
+     * @param employee
+     * @returns {*}
+     */
+    obj.updateEmployee = function (id, employee) {
+        console.log(JSON.stringify(employee));
+        return {'success': true, 'message': ''};
+        //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
+        //    return status.data;
+        //});
     };
 
+    /**
+     * Delete an employee by ID
+     * @param id
+     */
     obj.deleteEmployee = function (id) {
         alert('delete ' + id);
+        return {'success': true, 'message': ''};
         //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
         //    return status.data;
         //});
+    };
+
+    /**
+     * Change password
+     * @param id
+     * @param password
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.changePassword = function (id, password) {
+        alert('delete ' + id);
+        return {'success': true, 'message': ''};
+    };
+
+    obj.getEmployeeGroups = function () {
+        return [
+                {'id': '1', 'name': 'Manage Banner', 'note': 'Quản lý banner: thêm banner, chỉnh sửa banner'},
+                {'id': '2', 'name': 'Manage Bill', 'note': 'Quản lý vận đơn: nhập vận đơn, cập nhật vận đơn...'},
+                {'id': '3', 'name': 'Manage Customer', 'note': 'Quản lý thông tin khách hàng'},
+                {'id': '4', 'name': 'Manage Information', 'note': 'Quản lý thông tin chung'},
+                {
+                    'id': '5',
+                    'name': 'Manage News',
+                    'note': 'Quản lý tin tức: đăng tin mới, cập nhật trang chủ, trang giới thiệu...'
+                },
+                {
+                    'id': '6',
+                    'name': 'Manage User',
+                    'note': 'Quản lý tài khoản người dùng: tạo tài khoản mới, đổi mật khẩu, cấp quyền truy cập trang quản trị...'
+                },
+
+            ];
     };
 
     return obj;

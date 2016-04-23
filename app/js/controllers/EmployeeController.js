@@ -14,7 +14,12 @@ app.controller('EmployeeController', function ($rootScope, $scope, $http, $timeo
     $scope.delete = function (id, username) {
         bootbox.confirm("Are you sure to delete user " + username + "?", function (result) {
             if (result) {
-                services.deleteEmployee(id);
+                var result = services.deleteEmployee(id);
+                if(result.success) {
+                    window.location.reload();
+                } else {
+                    bootbox.alert(result.message);
+                }
             } else {
                 // do nothing
             }
@@ -31,21 +36,50 @@ app.controller('EditEmployeeController', function ($rootScope, $scope, $location
     $rootScope.title = (employee_id > -1) ? 'Edit Employee' : 'Add Employee';
     $scope.buttonText = (employee_id > -1) ? 'Update Employee' : 'Add New Employee';
 
-    var employee = services.getEmployee(employee_id);
-
-    $scope.employee = employee;
+    $scope.employee = services.getEmployee(employee_id);
+    var oldEmployee = $scope.employee;
 
     $scope.submit = function () {
-        alert($scope.employee.fullname);
-    };
-
-    $scope.saveEmployee = function (employee) {
-        $location.path('/');
-        if (employee_id <= -1) {
-            services.insertCustomer(employee);
+        if(employee_id == -1 ) {
+            // new employee
+            var result = services.newEmployee($scope.employee);
+            if(result.success) {
+                window.location.href = '#/employee-list.html';
+            } else {
+                bootbox.alert(result.message);
+            }
+        } else {
+            // update employee
+            var result = services.updateEmployee(employee_id, $scope.employee);
+            if(result.success) {
+                window.location.href = '#/employee-list.html';
+            } else {
+                bootbox.alert(result.message);
+            }
         }
-        else {
-            services.updateCustomer(employee_id, employee);
+    };
+});
+
+app.controller('ChangePasswordEmployeeController', function ($rootScope, $scope, $location, $routeParams, services) {
+    $scope.$on('$viewContentLoaded', function () {
+        // initialize core components
+    });
+    var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
+
+    $scope.employee = services.getEmployee(employee_id);
+    var oldEmployee = $scope.employee;
+
+    $scope.submit = function () {
+        if(employee_id != -1 ) {
+            // new employee
+            var result = services.newEmployee($scope.employee);
+            if(result.success) {
+                window.location.href = '#/employee-list.html';
+            } else {
+                bootbox.alert(result.message);
+            }
+        } else {
+            bootbox.alert('Invalid user info!');
         }
     };
 });

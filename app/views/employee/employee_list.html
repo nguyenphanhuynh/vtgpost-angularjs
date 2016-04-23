@@ -46,9 +46,9 @@
                         <tr>
                             <th>STT</th>
                             <th width="30%"> Tên người dùng </th>
-                            <th width="20%"> Tên đăng nhập </th>
-                            <th width="20%" class="text-center"> Đang hoạt động </th>
-                            <th width="30%"></th>
+                            <th width="15%"> Tên đăng nhập </th>
+                            <th width="15%" class="text-center"> Đang hoạt động </th>
+                            <th width="40%"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,11 +61,14 @@
                                 <span class="label label-sm label-danger" ng-if="!e.active"> No </span>
                             </td>
                             <td class="text-right">
-                                <a href="javascript:;" class="btn btn-sm default"> Phân quyền
+                                <a href="#/manage-employee-group.html?id={{e.id}}" class="btn btn-sm default"> Phân quyền
                                     <i class="fa fa-users   "></i>
                                 </a>
-                                <a href="javascript:;" class="btn btn-sm yellow"> Cập nhật
+                                <a href="#/edit-employee.html?id={{e.id}}" class="btn btn-sm yellow"> Cập nhật
                                     <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#/change-password.html?id={{e.id}}" class="btn btn-sm purple-sharp"> Đổi mật khẩu
+                                    <i class="fa fa-key"></i>
                                 </a>
                                 <a href="javascript:;" ng-click="delete (e.id, e.username)" class="btn btn-sm red"> Xoá
                                     <i class="fa fa-remove"></i>

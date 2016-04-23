@@ -8,7 +8,7 @@ var VTGApp = angular.module("VTGApp", [
     "ui.bootstrap",
     "oc.lazyLoad",
     "ngSanitize",
-    'ngRoute'
+    'ngRoute',
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -171,7 +171,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
         })
 
         .state('employee_list', {
-            url: "/employee_list.html",
+            url: "/employee-list.html",
             templateUrl: "views/employee/employee_list.html",
             data: {pageTitle: 'Danh Sách Nhân Viên'},
             controller: "EmployeeController",
@@ -205,10 +205,41 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                            //'assets/global/plugins/jquery-validation/js/additional-methods.min.js',
-                            'assets/pages/scripts/form-validation-edit-employee.js',
                             'js/controllers/EmployeeController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('change_password', {
+            url: "/change-password.html",
+            templateUrl: "views/employee/change_password.html",
+            data: {pageTitle: 'Change ssword - Đổi mật khẩu'},
+            controller: "ChangePasswordEmployeeController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/EmployeeController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('manage_employee_group', {
+            url: "/manage-employee-group.html",
+            templateUrl: "views/employee/update_employee_group.html",
+            data: {pageTitle: 'Quản lý nhóm'},
+            controller: "UpdateEmployeeGroupController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/EmployeeGroupController.js',
                         ]
                     });
                 }]
@@ -217,7 +248,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
 
         .state('employee_group', {
             url: "/employee_group.html",
-            templateUrl: "views/employee/manage_employee_group.html",
+            templateUrl: "views/employee/employee_group_list.html",
             data: {pageTitle: 'User Groups - Danh Sách Nhóm'},
             controller: "EmployeeGroupController",
             resolve: {

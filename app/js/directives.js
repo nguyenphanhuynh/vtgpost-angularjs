@@ -63,3 +63,58 @@ VTGApp.directive('dropdownMenuHover', function () {
     }
   };  
 });
+
+VTGApp.directive("passwordVerify", function() {
+    return {
+        require: "ngModel",
+        scope: {
+            passwordVerify: '='
+        },
+        link: function(scope, element, attrs, ctrl) {
+            scope.$watch(function() {
+                var combined;
+
+                if (scope.passwordVerify || ctrl.$viewValue) {
+                    combined = scope.passwordVerify + '_' + ctrl.$viewValue;
+                }
+                return combined;
+            }, function(value) {
+                if (value) {
+                    ctrl.$parsers.unshift(function(viewValue) {
+                        var origin = scope.passwordVerify;
+                        if (origin !== viewValue) {
+                            ctrl.$setValidity("passwordVerify", false);
+                            return undefined;
+                        } else {
+                            ctrl.$setValidity("passwordVerify", true);
+                            return viewValue;
+                        }
+                    });
+                }
+            });
+        }
+    };
+});
+
+//VTGApp.directive('initSwitch', function () {
+//    return {
+//        scope: {
+//            switchVariable: '=' //this is how you define 2way binding with whatever is passed on the switch-variable attribute
+//        },
+//        link: function (scope, element, attr) {
+//            scope.$evalAsync(function () {
+//                //element.switch();
+//                console.log(element);
+//            });
+//
+//            element.on("change", function(){
+//                if(scope.switchVariable)
+//                    scope.switchVariable = !scope.switchVariable
+//                else
+//                    scope.switchVariable = true;
+//
+//                scope.$apply(); //I believe you need this to propagate the changes
+//            });
+//        }
+//    }
+//});

@@ -3,3 +3,7 @@
 .dataTable.orange thead {
     background-color: #FFB848;
 }
+
+.text-color-red {
+    color: red;
+}
