@@ -39,10 +39,9 @@ app.controller('EditEmployeeController', function ($rootScope, $scope, $location
     var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
 
     $rootScope.title = (employee_id > -1) ? 'Chỉnh sửa thông tin nhân viên' : 'Tạo tài khoản mới';
-    $scope.buttonText = (employee_id > -1) ? 'Lưu hỉnh sửa' : 'Tạo tài khoản mới';
+    $scope.buttonText = (employee_id > -1) ? 'Lưu chỉnh sửa' : 'Tạo tài khoản mới';
 
     $scope.employee = services.getEmployee(employee_id);
-    var oldEmployee = $scope.employee;
 
     $scope.submit = function () {
         if(employee_id == -1 ) {

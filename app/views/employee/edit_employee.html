@@ -54,10 +54,10 @@
                                ng-maxlength="50"
                                required
                                placeholder="Customer name - Maximum 50 characters">
-                        <span ng-show="userForm.fullname.$error.required && !userForm.fullname.$untouched"
+                        <span ng-show="form.fullname.$error.required && !form.fullname.$untouched"
                               class="help-block text-color-red">
                             Không được để trống họ tên</span>
-                        <span ng-show="userForm.fullname.$error.maxlength && !userForm.fullname.$untouched"
+                        <span ng-show="form.fullname.$error.maxlength && !form.fullname.$untouched"
                               class="help-block text-color-red">
                             Họ tên không được dài hơn 50 ký tự</span>
                     </div>
@@ -75,10 +75,10 @@
                                placeholder="User name - Maximum 20 characters"
                                ng-maxlength="20">
                         <span class="help-block text-color-red"
-                              ng-show="userForm.username.$error.required &&!userForm.username.$untouched" >
+                              ng-show="form.username.$error.required &&!form.username.$untouched">
                             Không được để trống tên đăng nhập</span>
                         <span class="help-block text-color-red"
-                              ng-show="userForm.username.$error.maxlength &&!userForm.username.$untouched" >
+                              ng-show="form.username.$error.maxlength &&!form.username.$untouched">
                             Tên đăng nhập không được dài quá 20 ký tự</span>
                     </div>
                 </div>
@@ -96,10 +96,10 @@
                                placeholder="Mật khẩu phải dài ít nhất 6 ký tự"
                                ng-minlength="6">
                         <span class="help-block text-color-red"
-                              ng-show="userForm.password.$error.required && !userForm.password.$untouched" >
+                              ng-show="form.password.$error.required && !form.password.$untouched">
                             Không để để trống mật khẩu</span>
                         <span class="help-block text-color-red"
-                              ng-show="userForm.password.$error.minlength && !userForm.password.$untouched" >
+                              ng-show="form.password.$error.minlength && !form.password.$untouched">
                             Mật khẩu phải dài ít nhất 6 ký tự</span>
                     </div>
                 </div>
@@ -118,13 +118,13 @@
                                placeholder="Password must contain at least 6 characters"
                                ng-minlength="6">
                         <span class="help-block text-color-red"
-                              ng-show="userForm.repeat_password.required && !userForm.repeat_password.$untouched">
+                              ng-show="form.repeat_password.required && !form.repeat_password.$untouched">
                             Nhập lại mật khẩu không được để trống</span>
                         <span class="help-block text-color-red"
-                              ng-show="userForm.repeat_password.$error.minlength && !userForm.repeat_password.$untouched">
+                              ng-show="form.repeat_password.$error.minlength && !form.repeat_password.$untouched">
                             Nhập lại mật khẩu phải dài ít nhất 6 ký tự</span>
                         <span class="help-block text-color-red"
-                              ng-show="userForm.repeat_password.$error.passwordVerify && !userForm.repeat_password.$untouched">
+                              ng-show="form.repeat_password.$error.passwordVerify && !form.repeat_password.$untouched">
                             Nhập lại mật khẩu phải giống với mật khẩu ở trên</span>
 
                     </div>
@@ -160,7 +160,8 @@
                     <div class="col-md-offset-3 col-md-9">
                         <button type="submit"
                                 class="btn green"
-                                ng-disabled="userForm.$invalid">{{buttonText}}</button>
+                                ng-disabled="form.$invalid">{{buttonText}}
+                        </button>
                         <a href="#/employee-list.html"
                            class="btn default">Cancel</a>
                     </div>

@@ -7,3 +7,7 @@
 .text-color-red {
     color: red;
 }
+
+#tbl_banners img.thumbnail-img {
+    max-height: 50px;
+}

@@ -5,6 +5,9 @@
 VTGApp.service("services", ['$http', function ($http) {
     var serviceBase = 'services/';
     var obj = {};
+    /************************
+     *        Employee      *
+     ************************/
     /**
      * Get all employees
      * @returns {*[]}
@@ -129,6 +132,157 @@ VTGApp.service("services", ['$http', function ($http) {
             },
 
         ];
+    };
+
+    /************************
+     *        Banner        *
+     ************************/
+    /**
+     * Get all banners
+     * @returns {*[]}
+     */
+    obj.getBanners = function () {
+        //return $http.get(serviceBase + 'Employees');
+        return [
+            {
+                'id': '1',
+                'title': '',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/banners/2.png',
+                'active': true,
+                'banner_type': 'Top banner'
+            },
+            {
+                'id': '2',
+                'title': '',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/banners/3.jpg',
+                'active': true,
+                'banner_type': 'Top banner'
+            },
+            {
+                'id': '3',
+                'title': '',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/banners/2.png',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '4',
+                'title': 'Dịch vụ chuyển phát nhanh',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/chuyenphatnhanh.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '5',
+                'title': 'Dịch vụ vận tải đường bộ',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/container-truck.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '6',
+                'title': 'Các dịch vụ gia tăng',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/dv_gia_tang.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '7',
+                'title': 'Dịch vụ chuyển phát tiết kiệm quốc tế',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/tiet-kiem.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '8',
+                'title': 'Dịch vụ hạng nặng quốc tế',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/van-tai-noi-dia.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '9',
+                'title': 'Dịch vụ chuyển phát nhanh quốc tế',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/ads/Van_tai_nuoc_ngoai.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+            {
+                'id': '10',
+                'title': 'New top banner',
+                'desc': '',
+                'url': 'http://vtgpost.vn/Images/banners/15051400000010999410.jpg',
+                'active': true,
+                'banner_type': 'Ads banner'
+            },
+        ];
+    };
+
+    /**
+     * Search banner by id
+     * @param BannerID
+     * @returns {*}
+     */
+    obj.getBanner = function (BannerID) {
+        var tmpArr = this.getBanners();
+        var foundIndex = -1;
+        angular.forEach(tmpArr, function (value, index) {
+            if (value.id == BannerID) {
+                foundIndex = index;
+            }
+        });
+        if (foundIndex == -1) {
+            return {'id': '-1', 'title': '', 'desc': '', 'url': '', 'active': true, 'banner_type': ''};
+        } else {
+            return tmpArr[foundIndex];
+        }
+    };
+
+    /**
+     * New banner
+     * @param banner
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.newBanner = function (banner) {
+        return {'success': true, 'message': ''};
+        //return {'success': false, 'message': 'Demo error message'};
+        //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
+        //    return results;
+        //});
+    };
+
+    /**
+     * Update banner
+     * @param id
+     * @param employee
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.updateBanner = function (id, banner) {
+        return {'success': true, 'message': ''};
+        //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
+        //    return status.data;
+        //});
+    };
+
+    /**
+     * Delete banner by id
+     * @param id
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.deleteBanner = function (id) {
+        return {'success': true, 'message': ''};
+        //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
+        //    return status.data;
+        //});
     };
 
     return obj;
