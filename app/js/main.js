@@ -170,6 +170,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Employee list
         .state('employee_list', {
             url: "/employee-list.html",
             templateUrl: "views/employee/employee_list.html",
@@ -194,6 +195,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Update employee
         .state('employee_edit', {
             url: "/edit-employee.html",
             templateUrl: "views/employee/edit_employee.html",
@@ -211,6 +213,8 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                 }]
             }
         })
+
+        // Change password
         .state('change_password', {
             url: "/change-password.html",
             templateUrl: "views/employee/change_password.html",
@@ -228,6 +232,8 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                 }]
             }
         })
+
+        // Manage employee group
         .state('manage_employee_group', {
             url: "/manage-employee-group.html",
             templateUrl: "views/employee/update_employee_group.html",
@@ -247,6 +253,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Employee group list
         .state('employee_group', {
             url: "/employee_group.html",
             templateUrl: "views/employee/employee_group_list.html",
@@ -267,6 +274,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Banner list
         .state('banner_list', {
             url: "/banner-list.html",
             templateUrl: "views/banner/banner_list.html",
@@ -289,6 +297,8 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                 }]
             }
         })
+
+        // Create / Edit banner
         .state('banner_edit', {
             url: "/edit-banner.html",
             templateUrl: "views/banner/edit_banner.html",
@@ -303,6 +313,44 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                             'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
                             'assets/global/plugins/fancybox/source/jquery.fancybox.css',
                             'js/controllers/BannerController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
+        // Hot line list
+        .state('hotline_list', {
+            url: "/hotline-list.html",
+            templateUrl: "views/hotline/hotline_list.html",
+            data: {pageTitle: 'Danh sách hotline'},
+            controller: "HotlineController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/HotlineController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
+        // Create / Update line list
+        .state('edit_hotline', {
+            url: "/edit-hotline.html",
+            templateUrl: "views/hotline/edit_hotline.html",
+            data: {pageTitle: 'Thêm / Chỉnh sửa hotline'},
+            controller: "EditHotlineController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/HotlineController.js',
                         ]
                     });
                 }],

@@ -285,5 +285,30 @@ VTGApp.service("services", ['$http', function ($http) {
         //});
     };
 
+    /************************
+     *        Hotlines      *
+     ************************/
+    obj.getHotlines = function () {
+        return [
+            {'id': 1, 'display_text': 'TP.HCM', 'login_name': 'johnny.huynhnguyen', 'type': true},
+            {'id': 2, 'display_text': 'TP.HCM', 'login_name': 'methailan2007', 'type': false},
+        ];
+    };
+
+    obj.getHotline = function (HotlineID) {
+        var tmpArr = this.getEmployees();
+        var foundIndex = -1;
+        angular.forEach(tmpArr, function (value, index) {
+            if (value.id == HotlineID) {
+                foundIndex = index;
+            }
+        });
+        if (foundIndex == -1) {
+            return {'id': -11, 'display_text': '', 'login_name': '', 'type': true};
+        } else {
+            return tmpArr[foundIndex];
+        }
+    };
+
     return obj;
 }]);

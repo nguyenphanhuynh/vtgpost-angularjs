@@ -1,0 +1,113 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/hotline-list.html">Danh sách hotline </a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><a href="#">{{title}}</a></li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered" ng-controller="EditHotlineController">
+    <div class="portlet-title">
+        <div class="caption font-green">
+            <i class="fa fa-user font-green"></i>
+            <span class="caption-subject bold uppercase"> {{title}}</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form"
+              class="form-horizontal"
+              name="form"
+              id="frm_edit_hotline"
+              ng-submit="submit()"
+              novalidate>
+            <input type="hidden"
+                   ng-model="hotline.id"
+                   name="id"
+                   id="id"/>
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="display_text">Display Text (Tên hiển thị)</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="display_text"
+                               name="display_text"
+                               ng-model="hotline.display_text"
+                               ng-maxlength="50"
+                               placeholder="Enter text - Maximum 50 characters"
+                               required/>
+                        <span ng-show="form.display_text.$error.required && !form.display_text.$untouched"
+                              class="help-block text-color-red">
+                           Tên hiển thị không được để trống </span>
+                        <span ng-show="form.display_text.$error.maxlength && !form.display_text.$untouched"
+                              class="help-block text-color-red">
+                           Tên hiển thị không được dài hơn 50 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="login_name">Login name (Tên đăng nhập)</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="login_name"
+                               name="login_name"
+                               ng-model="hotline.login_name"
+                               ng-maxlength="20"
+                               placeholder="Enter text - Maximum 20 characters"
+                               required/>
+                        <span ng-show="form.login_name.$error.required && !form.login_name.$untouched"
+                              class="help-block text-color-red">
+                           Tên đăng nhập không để trống </span>
+                        <span ng-show="form.login_name.$error.maxlength && !form.login_name.$untouched"
+                              class="help-block text-color-red">
+                           Tên đăng nhập không được dài hơn 20 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="login_name">Line type (Loại dịch vụ)</label>
+                    <div class="col-md-9">
+                        <input type="checkbox"
+                               class="make-switch"
+                               id="type"
+                               name="type"
+                               ng-model="hotline.type"
+                               data-on-color="success"
+                               data-off-color="warning"
+                               data-on-text=" Skype "
+                               data-off-text=" Yahoo "
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit"
+                                class="btn green"
+                                ng-disabled="form.$invalid">{{buttonText}}
+                        </button>
+                        <a href="#/hotline-list.html"
+                           class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
