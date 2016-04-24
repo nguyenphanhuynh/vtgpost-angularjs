@@ -281,6 +281,8 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                             'assets/global/plugins/datatables/datatables.min.css',
                             'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
                             'assets/global/plugins/bootbox/bootbox.min.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.css',
                             'js/controllers/BannerController.js',
                         ]
                     });
@@ -298,10 +300,12 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.css',
                             'js/controllers/BannerController.js',
                         ]
                     });
-                }]
+                }],
             }
         })
 

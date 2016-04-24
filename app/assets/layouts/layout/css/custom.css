@@ -8,6 +8,10 @@
     color: red;
 }
 
-#tbl_banners img.thumbnail-img {
+.thumbnail-img {
     max-height: 50px;
+}
+
+.thumbnail2x-img {
+    max-height: 100px;
 }

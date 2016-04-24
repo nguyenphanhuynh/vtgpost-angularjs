@@ -32,7 +32,7 @@ app.controller('BannerController', function ($rootScope, $scope, $http, $timeout
     }
 });
 
-app.controller('EditBannerController', function ($rootScope, $scope, $http, $location, $timeout, $state, services) {
+app.controller('EditBannerController', function ($rootScope, $scope, $http, $location, $window, $timeout, $state, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
     });
@@ -41,6 +41,7 @@ app.controller('EditBannerController', function ($rootScope, $scope, $http, $loc
     $scope.buttonText = (banner_id > -1) ? 'Lưu chỉnh sửa' : 'Thêm banner mới';
 
     $scope.banner = services.getBanner(banner_id);
+    console.log($scope.banner);
 
     $scope.submit = function () {
         if (banner_id == -1) {

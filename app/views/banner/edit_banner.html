@@ -71,10 +71,32 @@
                     </div>
                 </div>
 
+                <div class="form-group" ng-show="banner.url != ''">
+                    <label class="col-md-3 control-label">&nbsp;</label>
+                    <div class="col-md-9">
+                        <a href="{{banner.url}}" class="fancy">
+                            <img src="{{banner.url}}" alt="{{banner.title}}" class="thumbnail2x-img"/>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="desc">Image (Hình ảnh)</label>
+                    <div class="col-md-9">
+                        <input type="file" nv-file-select="" accept="image/*" ng-model="banner.url"/>
+                        <span class="help-block">
+                            Best image dimensions for Top banner <strong>790 x 190</strong> (Kích thước cho Top banner 780 x 190)
+                        </span>
+                        <span class="help-block">
+                            Support file types: jpeg, jpg, png (Định dạng hình ảnh hỗ trợ: jpeg, jpg, png)
+                        </span>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"
                            for="banner_type">Type (Loại)</label>
-                    <div class="col-md-5">
+                    <div class="col-md-5" ng-if="banner.id == -1">
                         <select class="form-control"
                                 id="banner_type"
                                 name="banner_type"
@@ -84,6 +106,9 @@
                             <option>Top Banner</option>
                             <option>Ads Banner</option>
                         </select>
+                    </div>
+                    <div class="col-md-9" ng-if="banner.id != -1">
+                        <p class="form-control-static">{{banner.banner_type}}</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -128,3 +153,10 @@
     </div>
 </div>
 <!-- END SAMPLE FORM PORTLET-->
+
+<script>
+    $(document).ready(function () {
+        $("a.fancy").fancybox();
+
+    });
+</script>

@@ -56,8 +56,8 @@
                         <tr class="odd gradeX" ng-repeat="e in banners">
                             <td>{{$index + 1}}</td>
                             <td> {{e.title}}</td>
-                            <td><a href="{{e.url}}" target="_blank"><img src="{{e.url}}" alt="{{e.title}}"
-                                                                         class="thumbnail-img"/></a></td>
+                            <td><a href="{{e.url}}" class="fancy"><img src="{{e.url}}" alt="{{e.title}}"
+                                                                       class="thumbnail-img"/></a></td>
                             <td> {{e.banner_type}}</td>
                             <td class="text-center">
                                 <span class="label label-sm label-success" ng-if="e.active"> Yes </span>
