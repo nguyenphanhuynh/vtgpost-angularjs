@@ -310,5 +310,42 @@ VTGApp.service("services", ['$http', function ($http) {
         }
     };
 
+    /**
+     * New hot line
+     * @param hotline
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.newHotline = function (hotline) {
+        return {'success': true, 'message': ''};
+        //return {'success': false, 'message': 'Demo error message'};
+        //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
+        //    return results;
+        //});
+    };
+
+    /**
+     * Update hotline
+     * @param id
+     * @param hotline
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.updateHotline = function (id, hotline) {
+        return {'success': true, 'message': ''};
+        //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
+        //    return status.data;
+        //});
+    };
+
+    /**
+     * Delete hotline
+     * @param id
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.deleteHotline = function (id) {
+        return {'success': true, 'message': ''};
+        //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
+        //    return status.data;
+        //});
+    };
     return obj;
 }]);
