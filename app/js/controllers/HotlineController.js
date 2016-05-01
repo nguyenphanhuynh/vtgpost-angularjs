@@ -15,6 +15,8 @@ app.controller('HotlineController', function ($rootScope, $scope, $http, $timeou
 app.controller('EditHotlineController', function ($rootScope, $scope, $http, $timeout, $location, $window, $state, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
+        // auto set state for switch
+        $('#type').bootstrapSwitch('state', $scope.hotline.type);
     });
 
     var hotline_id = ($location.search().id) ? parseInt($location.search().id) : 0;

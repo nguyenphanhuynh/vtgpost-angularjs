@@ -304,7 +304,7 @@ VTGApp.service("services", ['$http', function ($http) {
             }
         });
         if (foundIndex == -1) {
-            return {'id': -11, 'display_text': '', 'login_name': '', 'type': true};
+            return {'id': -1, 'display_text': '', 'login_name': '', 'type': true};
         } else {
             return tmpArr[foundIndex];
         }
