@@ -209,6 +209,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
+                            //'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
                             'js/controllers/EmployeeController.js',
                         ]
                     });
@@ -317,6 +318,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         files: [
                             'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
                             'assets/global/plugins/fancybox/source/jquery.fancybox.css',
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
                             'js/controllers/BannerController.js',
                         ]
                     });
@@ -359,6 +361,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
                             'js/controllers/HotlineController.js',
                         ]
                     });
@@ -407,6 +410,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         files: [
                             'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
                             'assets/global/plugins/fancybox/source/jquery.fancybox.css',
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
                             'js/controllers/CustomerController.js',
                         ]
                     });

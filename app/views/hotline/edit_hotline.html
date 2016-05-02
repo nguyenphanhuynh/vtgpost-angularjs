@@ -48,6 +48,7 @@
                                name="display_text"
                                ng-model="hotline.display_text"
                                ng-maxlength="50"
+                               maxlength="50"
                                placeholder="Enter text - Maximum 50 characters"
                                required/>
                         <span ng-show="form.display_text.$error.required && !form.display_text.$untouched"
@@ -68,6 +69,7 @@
                                name="login_name"
                                ng-model="hotline.login_name"
                                ng-maxlength="20"
+                               maxlength="20"
                                placeholder="Enter text - Maximum 20 characters"
                                required/>
                         <span ng-show="form.login_name.$error.required && !form.login_name.$untouched"
@@ -111,3 +113,11 @@
     </div>
 </div>
 <!-- END SAMPLE FORM PORTLET-->
+
+<script>
+    $(document).ready(function () {
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
+    });
+</script>

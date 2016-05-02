@@ -48,6 +48,7 @@
                                name="title"
                                ng-model="banner.title"
                                ng-maxlength="100"
+                               maxlength="100"
                                placeholder="Enter text - Maximum 100 characters">
                         <span ng-show="form.title.$error.maxlength && !form.title.$untouched"
                               class="help-block text-color-red">
@@ -64,6 +65,7 @@
                                name="desc"
                                ng-model="banner.desc"
                                ng-maxlength="300"
+                               maxlength="300"
                                placeholder="Abstract - Maximum 300 characters">
                         <span ng-show="form.desc.$error.maxlength && !form.desc.$untouched"
                               class="help-block text-color-red">
@@ -148,6 +150,8 @@
 <script>
     $(document).ready(function () {
         $("a.fancy").fancybox();
-
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
 </script>

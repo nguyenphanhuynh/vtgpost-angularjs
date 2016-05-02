@@ -48,6 +48,7 @@
                                name="customer_name"
                                ng-model="customer.customer_name"
                                ng-maxlength="100"
+                               maxlength="100"
                                placeholder="Customer name - Maximum 100 characters">
                         <span ng-show="form.customer_name.$error.maxlength && !form.customer_name.$untouched"
                               class="help-block text-color-red">
@@ -64,6 +65,7 @@
                                name="address"
                                ng-model="customer.address"
                                ng-maxlength="300"
+                               maxlength="300"
                                placeholder="Address - Maximum 300 characters">
                         <span ng-show="form.address.$error.maxlength && !form.address.$untouched"
                               class="help-block text-color-red">
@@ -80,6 +82,7 @@
                                id="contact_person"
                                ng-model="customer.contact_person"
                                ng-maxlength="50"
+                               maxlength="50"
                                placeholder="Contact person name - Maximum 50 characters"
                         />
                         <span ng-show="form.contact_person.$error.maxlength && !form.contact_person.$untouched"
@@ -94,6 +97,7 @@
                                id="website"
                                ng-model="customer.website"
                                ng-maxlength="100"
+                               maxlength="100"
                                placeholder="http://"
                         />
                         <span ng-show="form.website.$error.maxlength && !form.website.$untouched"
@@ -110,6 +114,7 @@
                                id="customer_phone"
                                ng-model="customer.customer_phone"
                                ng-maxlength="20"
+                               maxlength="20"
                                placeholder="Contact number - Maximum 20 characters"
                         />
                         <span ng-show="form.customer_phone.$error.maxlength && !form.customer_phone.$untouched"
@@ -124,6 +129,7 @@
                                id="customer_mobile"
                                ng-model="customer.customer_mobile"
                                ng-maxlength="20"
+                               maxlength="20"
                                placeholder="Contact cell phone - Maximum 20 characters"
                         />
                         <span ng-show="form.customer_mobile.$error.maxlength && !form.customer_mobile.$untouched"
@@ -177,6 +183,8 @@ Submit
 <script>
     $(document).ready(function () {
         $("a.fancy").fancybox();
-
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
 </script>
