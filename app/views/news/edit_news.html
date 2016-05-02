@@ -1,0 +1,138 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/news-list.html">Danh sách news </a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><a href="#">{{title}}</a></li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered" ng-controller="EditNewsController">
+    <div class="portlet-title">
+        <div class="caption font-green">
+            <i class="fa fa-user font-green"></i>
+            <span class="caption-subject bold uppercase"> {{title}}</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form"
+              class="form-horizontal"
+              name="form"
+              id="frm_edit_news"
+              ng-submit="submit()"
+              novalidate>
+            <input type="hidden"
+                   ng-model="news.id"
+                   name="id"
+                   id="id"/>
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="title">Title (Tiêu đề)</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="title"
+                               name="title"
+                               ng-model="news.title"
+                               ng-maxlength="100"
+                               maxlength="100"
+                               placeholder="Enter text - Maximum 100 characters">
+                        <span ng-show="form.title.$error.maxlength && !form.title.$untouched"
+                              class="help-block text-color-red">
+                           Tiêu đề không được dài hơn 100 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="abstract">Abstract (Giới thiệu)</label>
+                    <div class="col-md-9">
+                        <textarea type="text"
+                                  class="form-control"
+                                  id="abstract"
+                                  name="abstract"
+                                  ng-model="news.abstract"
+                                  ng-maxlength="200"
+                                  maxlength="200"
+                                  placeholder="Abstract - Maximum 200 characters">
+
+                        </textarea>
+                        <span ng-show="form.abstract.$error.maxlength && !form.abstract.$untouched"
+                              class="help-block text-color-red">
+                           Mô tả không được dài hơn 300 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="content">Content (Nội dung chính)</label>
+                    <div class="col-md-9">
+                        <textarea name="content" id="content" ng-model="news.content"></textarea>
+                        <span ng-show="form.content.$error.maxlength && !form.content.$untouched"
+                              class="help-block text-color-red">
+                           Mô tả không được dài hơn 300 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="category_id">Category (Mục tin tức)</label>
+                    <div class="col-md-5">
+                        <select class="form-control select2"
+                                id="category_id"
+                                name="category_id"
+                                ng-model="news.category_id"
+                                required
+                        >
+                            <option ng-repeat="c in newsCategories" value="{{c.id}}" ng-if="e.category_id==e.id"
+                                    selected>{{c.name}}
+                            </option>
+                            <option ng-repeat="c in newsCategories" value="{{c.id}}" ng-if="e.category_id!=e.id">
+                                {{c.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="active">Posted Date (Ngày đăng)</label>
+                    <div class="col-md-9">
+                        <input type="checkbox"
+                               class="make-switch"
+                               id="active"
+                               name="active"
+                               ng-model="news.active"
+                               data-on-color="success"
+                               data-off-color="warning"
+                               data-on-text=" Yes "
+                               data-off-text=" No "
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit"
+                                class="btn green"
+                                ng-disabled="form.$invalid">{{buttonText}}
+                        </button>
+                        <a href="#/news-list.html"
+                           class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

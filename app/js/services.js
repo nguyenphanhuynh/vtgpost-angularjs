@@ -717,7 +717,11 @@ VTGApp.service("services", ['$http', function ($http) {
     /************************
      *        News          *
      ************************/
-    obj.getNewsCategory = function () {
+    /**
+     * Get all news category
+     * @returns {*[]}
+     */
+    obj.getNewsCategories = function () {
         return [
             {'id': 1, 'name': 'Services - Dịch vụ'},
             {'id': 2, 'name': 'Quality Control - Quản lý chất lượng'},
@@ -726,6 +730,10 @@ VTGApp.service("services", ['$http', function ($http) {
         ];
     };
 
+    /**
+     * Get all news
+     * @returns {*[]}
+     */
     obj.getNewses = function () {
         return [
             {
@@ -739,5 +747,67 @@ VTGApp.service("services", ['$http', function ($http) {
             }
         ];
     };
+
+    obj.getNews = function (NewsID) {
+        var tmpArr = this.getNewses();
+        var foundIndex = -1;
+        angular.forEach(tmpArr, function (value, index) {
+            if (value.id == NewsID) {
+                foundIndex = index;
+            }
+        });
+        if (foundIndex == -1) {
+            return {
+                'id': -1,
+                'title': '',
+                'abstract': '',
+                'content': "",
+                'category_id': '',
+                'category_name': '',
+                'posted_date': ''
+            };
+        } else {
+            return tmpArr[foundIndex];
+        }
+    };
+
+    /**
+     * New news
+     * @param news
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.newNews = function (news) {
+        return {'success': true, 'message': ''};
+        //return {'success': false, 'message': 'Demo error message'};
+        //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
+        //    return results;
+        //});
+    };
+
+    /**
+     * Update news
+     * @param id
+     * @param news
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.updateNews = function (id, news) {
+        return {'success': true, 'message': ''};
+        //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
+        //    return status.data;
+        //});
+    };
+
+    /**
+     * Delete news by id
+     * @param id
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.deleteNews = function (id) {
+        return {'success': true, 'message': ''};
+        //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
+        //    return status.data;
+        //});
+    };
+
     return obj;
 }]);

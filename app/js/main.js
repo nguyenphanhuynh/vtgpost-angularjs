@@ -441,6 +441,31 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Create / Edit news
+        .state('news_edit', {
+            url: "/edit-news.html",
+            templateUrl: "views/news/edit_news.html",
+            data: {pageTitle: 'Soạn thảo tin tức'},
+            controller: "EditNewsController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-summernote/summernote.css',
+                            'assets/global/plugins/bootstrap-summernote/summernote.min.js',
+                            'assets/global/plugins/select2/css/select2.min.css',
+                            'assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            'assets/global/plugins/select2/js/select2.full.min.js',
+                            'js/controllers/NewsController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
         // User Profile Dashboard
         .state("profile.dashboard", {
             url: "/dashboard",
