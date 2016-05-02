@@ -57,6 +57,7 @@ app.controller('EmployeeController', function ($rootScope, $scope, $http, $timeo
 app.controller('EditEmployeeController', function ($rootScope, $scope, $location, $window, $routeParams, $state, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
+        $('#active').bootstrapSwitch('state', $scope.employee.active);
     });
     var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
 

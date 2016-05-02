@@ -347,5 +347,371 @@ VTGApp.service("services", ['$http', function ($http) {
         //    return status.data;
         //});
     };
+
+
+    /************************
+     *        Customer        *
+     ************************/
+    /**
+     * Get all customers
+     * @returns {*[]}
+     */
+    obj.getCustomers = function () {
+        //return $http.get(serviceBase + 'Employees');
+        return [
+            {
+                'id': '1',
+                'customer_name': 'Ngân hàng Liên Việt',
+                'address': '1 Nguyễn Thị Minh Khai, Quận 1, Tp.HCM',
+                'contact_person': 'Sunny Vo',
+                'customer_phone': '01234567890',
+                'customer_mobile': '0938 704 706',
+                'website': 'http://lienvietbank.com',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000001.jpg',
+            },
+            {
+                'id': '2',
+                'customer_name': 'Zuellig Pharma',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': 'http://www.zuelligPharma.com',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000003.jpg',
+            },
+            {
+                'id': '3',
+                'customer_name': 'GTel',
+                'address': '',
+                'contact_person': 'Nguyễn Phan Huỳnh',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000004.jpg',
+            },
+            {
+                'id': '4',
+                'customer_name': 'ABC Securities',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000002.jpg',
+            },
+            {
+                'id': '5',
+                'customer_name': 'Vinaconex',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000005.jpg',
+            }, {
+                'id': '6',
+                'customer_name': 'NH nông nghiệp và phát triển nông thôn VN	',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': 'http://vtgpost.vn/Images/recent-customers/2705140000006.jpg',
+            }, {
+                'id': '7',
+                'customer_name': 'Toshiba',
+                'address': '',
+                'contact_person': 'TOSHIBA',
+                'customer_phone': '0838242823',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '8',
+                'customer_name': 'BH PJICO',
+                'address': '',
+                'contact_person': 'BH PJICO',
+                'customer_phone': '0838208341',
+                'customer_mobile': '0904567657',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '9',
+                'customer_name': 'CK THÀNH CÔNG',
+                'address': '',
+                'contact_person': 'CK THÀNH CÔNG',
+                'customer_phone': '0938808036',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '10',
+                'customer_name': 'DEKALB',
+                'address': '',
+                'contact_person': 'DEKALB',
+                'customer_phone': '0838233474',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '11',
+                'customer_name': 'MEINHARDT',
+                'address': '',
+                'contact_person': 'MEINHARDT',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '12',
+                'customer_name': 'HARRISCHEM INC',
+                'address': '',
+                'contact_person': 'HARRISCHEM INC',
+                'customer_phone': '01213231990',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '13',
+                'customer_name': 'PVCOMBANK',
+                'address': '',
+                'contact_person': 'PVCOMBANK',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '14',
+                'customer_name': 'VP BANK',
+                'address': '',
+                'contact_person': 'VP BANK',
+                'customer_phone': '0854041954',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '15',
+                'customer_name': 'ELLESHOP',
+                'address': '',
+                'contact_person': 'ELLESHOP',
+                'customer_phone': '0949220006',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '16',
+                'customer_name': 'NATIONAL',
+                'address': '',
+                'contact_person': 'MR.KHOA',
+                'customer_phone': '0969042802',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '17',
+                'customer_name': 'HÀN VIỆT',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '18',
+                'customer_name': 'ĐỊA VIỆT',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '19',
+                'customer_name': 'INDOCHINA',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '20',
+                'customer_name': 'INCENTER',
+                'address': '',
+                'contact_person': '',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '21',
+                'customer_name': 'MEINHART',
+                'address': '',
+                'contact_person': 'MS LINH',
+                'customer_phone': '0835268973',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '22',
+                'customer_name': 'KANTANA',
+                'address': '',
+                'contact_person': 'Kantana',
+                'customer_phone': '0902584117',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '23',
+                'customer_name': 'THÀNH Ý',
+                'address': '',
+                'contact_person': 'THÀNH Ý',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            },
+            {
+                'id': '24',
+                'customer_name': 'CTY CP GIÁC QUAN THỨ 6',
+                'address': '',
+                'contact_person': 'CTY CP GIÁC QUAN THỨ 6',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '25',
+                'customer_name': 'EUROASIATIC',
+                'address': '',
+                'contact_person': 'EUROASIATIC',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '26',
+                'customer_name': 'CTY DINH DƯỠNG SG',
+                'address': '',
+                'contact_person': 'CTY DINH DƯỠNG SG',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '27',
+                'customer_name': 'CTY ĐƯỜNG NÉT',
+                'address': '',
+                'contact_person': 'CTY ĐƯỜNG NÉT',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '28',
+                'customer_name': 'SÀI GÒN PART',
+                'address': '',
+                'contact_person': 'SÀI GÒN PART',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '29',
+                'customer_name': 'ĐIỆN TỬ HÀN VIỆT',
+                'address': '',
+                'contact_person': 'ĐIỆN TỬ HÀN VIỆT',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '30',
+                'customer_name': 'HIỆP HỘI LOGISTIC Q.4',
+                'address': '',
+                'contact_person': 'HIỆP HỘI LOGISTIC Q.4',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '31',
+                'customer_name': 'CONCEPTION',
+                'address': '',
+                'contact_person': 'CONCEPTION',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }, {
+                'id': '32',
+                'customer_name': 'VPA',
+                'address': '',
+                'contact_person': 'VPA',
+                'customer_phone': '',
+                'customer_mobile': '',
+                'website': '',
+                'logo': '',
+            }
+        ];
+    };
+
+    /**
+     * Search customer by id
+     * @param CustomerID
+     * @returns {*}
+     */
+    obj.getCustomer = function (CustomerID) {
+        var tmpArr = this.getCustomers();
+        var foundIndex = -1;
+        angular.forEach(tmpArr, function (value, index) {
+            if (value.id == CustomerID) {
+                foundIndex = index;
+            }
+        });
+        if (foundIndex == -1) {
+            return {'id': '-1', 'title': '', 'desc': '', 'url': '', 'active': true, 'customer_type': ''};
+        } else {
+            return tmpArr[foundIndex];
+        }
+    };
+
+    /**
+     * New customer
+     * @param customer
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.newCustomer = function (customer) {
+        return {'success': true, 'message': ''};
+        //return {'success': false, 'message': 'Demo error message'};
+        //return $http.post(serviceBase + 'newEmployee', employee).then(function (results) {
+        //    return results;
+        //});
+    };
+
+    /**
+     * Update customer
+     * @param id
+     * @param employee
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.updateCustomer = function (id, customer) {
+        return {'success': true, 'message': ''};
+        //return $http.post(serviceBase + 'updateEmployee', {id: id, Employee: employee}).then(function (status) {
+        //    return status.data;
+        //});
+    };
+
+    /**
+     * Delete customer by id
+     * @param id
+     * @returns {{success: boolean, message: string}}
+     */
+    obj.deleteCustomer = function (id) {
+        return {'success': true, 'message': ''};
+        //return $http.delete(serviceBase + 'deleteEmployee?id=' + id).then(function (status) {
+        //    return status.data;
+        //});
+    };
     return obj;
 }]);

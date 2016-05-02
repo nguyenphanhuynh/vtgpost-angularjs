@@ -35,6 +35,7 @@ app.controller('BannerController', function ($rootScope, $scope, $http, $timeout
 app.controller('EditBannerController', function ($rootScope, $scope, $http, $location, $window, $timeout, $state, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
+        $('#active').bootstrapSwitch('state', $scope.banner.active);
     });
     var banner_id = ($location.search().id) ? parseInt($location.search().id) : 0;
     $scope.title = (banner_id > -1) ? 'Sửa banner' : 'Thêm banner mới';

@@ -169,7 +169,9 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                 }]
             }
         })
-
+        /*********************************
+         *            Employee           *
+         *********************************/
         // Employee list
         .state('employee_list', {
             url: "/employee-list.html",
@@ -274,6 +276,9 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        /*********************************
+         *            Banner             *
+         *********************************/
         // Banner list
         .state('banner_list', {
             url: "/banner-list.html",
@@ -319,6 +324,9 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        /*********************************
+         *            Hotline            *
+         *********************************/
         // Hot line list
         .state('hotline_list', {
             url: "/hotline-list.html",
@@ -352,6 +360,54 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'js/controllers/HotlineController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
+        /*********************************
+         *            Customer             *
+         *********************************/
+        // Customer list
+        .state('customer_list', {
+            url: "/customer-list.html",
+            templateUrl: "views/customer/customer_list.html",
+            data: {pageTitle: 'Danh sách khách hàng'},
+            controller: "CustomerController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/datatables/datatables.min.css',
+                            'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
+                            'assets/global/plugins/bootbox/bootbox.min.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.css',
+                            'js/controllers/CustomerController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+
+        // Create / Edit customer
+        .state('customer_edit', {
+            url: "/edit-customer.html",
+            templateUrl: "views/customer/edit_customer.html",
+            data: {pageTitle: 'Thêm / Sửa thông tin khách hàng'},
+            controller: "EditCustomerController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
+                            'assets/global/plugins/fancybox/source/jquery.fancybox.css',
+                            'js/controllers/CustomerController.js',
                         ]
                     });
                 }],
