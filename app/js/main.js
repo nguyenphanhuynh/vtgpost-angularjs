@@ -9,7 +9,7 @@ var VTGApp = angular.module("VTGApp", [
     "oc.lazyLoad",
     "ngSanitize",
     'ngRoute',
-]); 
+]);
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 VTGApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
@@ -185,7 +185,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                             'assets/global/plugins/datatables/datatables.min.css',
                             'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
                             'assets/global/plugins/datatables/datatables.all.min.js',
-                            'assets/pages/scripts/table-datatables-managed.min.js',
+                            //'assets/pages/scripts/tblEmployeeList.js',
                             'assets/global/plugins/bootbox/bootbox.min.js',
                             'assets/pages/scripts/ui-notific8.min.js',
                             'js/controllers/EmployeeController.js',

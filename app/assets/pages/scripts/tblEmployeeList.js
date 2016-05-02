@@ -39,9 +39,10 @@ var TableDatatablesManaged = function () {
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
-
+            searching: false,
+            ordering: false,
             "columnDefs": [ {
-                "targets": [0, 1, 2, 3, 4, 5, 6],
+                "targets": [0, 1, 2, 3],
                 "orderable": false,
                 "searchable": false
             }],
@@ -51,18 +52,12 @@ var TableDatatablesManaged = function () {
                 [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "pageLength": 5,
+            "pageLength": 1,
             "pagingType": "bootstrap_full_number",
             "columnDefs": [{  // set default column settings
                 'orderable': false,
-                'targets': [0, 1, 2, 3, 4, 5, 6]
-            }, {
-                "searchable": false,
-                "targets": [0, 1, 2, 3, 4, 5, 6]
-            }],
-            "order": [
-                [1, "asc"]
-            ] // set first column as a default sort by asc
+                'targets': []
+            }]
         });
     };
 
