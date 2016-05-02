@@ -713,5 +713,31 @@ VTGApp.service("services", ['$http', function ($http) {
         //    return status.data;
         //});
     };
+
+    /************************
+     *        News          *
+     ************************/
+    obj.getNewsCategory = function () {
+        return [
+            {'id': 1, 'name': 'Services - Dịch vụ'},
+            {'id': 2, 'name': 'Quality Control - Quản lý chất lượng'},
+            {'id': 3, 'name': 'Recruitment - Tuyển dụng'},
+            {'id': 4, 'name': 'News - Tin tức'},
+        ];
+    };
+
+    obj.getNewses = function () {
+        return [
+            {
+                'id': 1,
+                'title': 'Hệ thống bảng giá',
+                'abstract': 'abstract demo',
+                'content': "<p>1.Bảng gi&aacute; CPN trong nước&nbsp;VTG</p><p>2.Bảng gi&aacute; V&acirc;̣n chuy&ecirc;̉n nhanh ti&ecirc;́t ki&ecirc;̣m</p><p>3.Bảng gi&aacute; V&acirc;̣n tải thường</p><p>4.Bảng gi&aacute; qu&ocirc;́c t&ecirc;́</p>",
+                'category_id': '1',
+                'category_name': 'Services - Dịch vụ',
+                'posted_date': ''
+            }
+        ];
+    };
     return obj;
 }]);

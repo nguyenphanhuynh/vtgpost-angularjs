@@ -418,6 +418,29 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        /*********************************
+         *            News               *
+         *********************************/
+        // News list
+        .state('news_list', {
+            url: "/news-list.html",
+            templateUrl: "views/news/news_list.html",
+            data: {pageTitle: 'Danh sách tin tức'},
+            controller: "NewsController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/bootbox/bootbox.min.js',
+                            'js/controllers/NewsController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
         // User Profile Dashboard
         .state("profile.dashboard", {
             url: "/dashboard",
