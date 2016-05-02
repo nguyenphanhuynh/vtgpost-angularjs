@@ -36,6 +36,10 @@ app.controller('EditBannerController', function ($rootScope, $scope, $http, $loc
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
         $('#active').bootstrapSwitch('state', $scope.banner.active);
+        $("a.fancy").fancybox();
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
     var banner_id = ($location.search().id) ? parseInt($location.search().id) : 0;
     $scope.title = (banner_id > -1) ? 'Sửa banner' : 'Thêm banner mới';

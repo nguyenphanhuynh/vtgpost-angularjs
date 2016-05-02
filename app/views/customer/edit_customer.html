@@ -137,16 +137,15 @@
                            Cellphone không được dài hơn 20 ký tự</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group" ng-show="customer.logo != ''">
-                <label class="col-md-3 control-label">&nbsp;</label>
-                <div class="col-md-9">
-                    <a href="{{customer.logo}}" class="fancy">
-                        <img src="{{customer.logo}}" alt="{{customer.customer_name}}" class="thumbnail2x-img"/>
-                    </a>
+                <div class="form-group" ng-show="customer.logo != ''">
+                    <label class="col-md-3 control-label">&nbsp;</label>
+                    <div class="col-md-9">
+                        <a href="{{customer.logo}}" class="fancy">
+                            <img src="{{customer.logo}}" alt="{{customer.customer_name}}" class="thumbnail2x-img"/>
+                        </a>
+                    </div>
                 </div>
-
                 <div class="form-group">
                     <label class="col-md-3 control-label"
                            for="logo">Image (Hình ảnh)</label>
@@ -179,12 +178,3 @@ Submit
     </div>
 </div>
 <!-- END SAMPLE FORM PORTLET-->
-
-<script>
-    $(document).ready(function () {
-        $("a.fancy").fancybox();
-        $('input[type="text"]').maxlength({
-            limitReachedClass: "label label-danger",
-        });
-    });
-</script>

@@ -209,7 +209,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         name: 'VTGApp',
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            //'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
                             'js/controllers/EmployeeController.js',
                         ]
                     });

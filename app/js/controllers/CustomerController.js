@@ -51,6 +51,10 @@ app.controller('CustomerController', function ($rootScope, $scope, $http, $timeo
 app.controller('EditCustomerController', function ($rootScope, $scope, $http, $location, $window, $timeout, $state, services) {
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
+        $("a.fancy").fancybox();
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
     var customer_id = ($location.search().id) ? parseInt($location.search().id) : 0;
     $scope.title = (customer_id > -1) ? 'Sửa thông tin' : 'Thêm khách hàng mới';

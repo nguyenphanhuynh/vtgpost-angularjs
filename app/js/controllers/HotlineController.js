@@ -38,6 +38,9 @@ app.controller('EditHotlineController', function ($rootScope, $scope, $http, $ti
         // initialize core components
         // auto set state for switch
         $('#type').bootstrapSwitch('state', $scope.hotline.type);
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
 
     var hotline_id = ($location.search().id) ? parseInt($location.search().id) : 0;

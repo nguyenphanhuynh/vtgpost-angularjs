@@ -58,6 +58,9 @@ app.controller('EditEmployeeController', function ($rootScope, $scope, $location
     $scope.$on('$viewContentLoaded', function () {
         // initialize core components
         $('#active').bootstrapSwitch('state', $scope.employee.active);
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
     });
     var employee_id = ($location.search().id) ? parseInt($location.search().id) : 0;
 
