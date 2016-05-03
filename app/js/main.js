@@ -9,6 +9,8 @@ var VTGApp = angular.module("VTGApp", [
     "oc.lazyLoad",
     "ngSanitize",
     'ngRoute',
+    //'angular-sanitize',
+    //'textAngular'
 ]);
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -319,6 +321,8 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                             'assets/global/plugins/fancybox/source/jquery.fancybox.pack.js',
                             'assets/global/plugins/fancybox/source/jquery.fancybox.css',
                             'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
                             'js/controllers/BannerController.js',
                         ]
                     });
@@ -459,6 +463,10 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                             'assets/global/plugins/select2/css/select2.min.css',
                             'assets/global/plugins/select2/css/select2-bootstrap.min.css',
                             'assets/global/plugins/select2/js/select2.full.min.js',
+                            //'../node_modules/textangular/dist/textAngular.css',
+                            //'../node_modules/textangular/dist/textAngular-rangy.min.js',
+                            //'../node_modules/textangular/dist/textAngular-sanitize.min.js',
+                            //'../node_modules/textangular/dist/textAngular.min.js',
                             'js/controllers/NewsController.js',
                         ]
                     });

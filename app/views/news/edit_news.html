@@ -78,7 +78,7 @@
                     <label class="col-md-3 control-label"
                            for="content">Content (Nội dung chính)</label>
                     <div class="col-md-9">
-                        <textarea name="content" id="content" ng-model="news.content"></textarea>
+                        <textarea name="content" id="content" ng-model="news.content">{{news.content}}</textarea>
                         <span ng-show="form.content.$error.maxlength && !form.content.$untouched"
                               class="help-block text-color-red">
                            Mô tả không được dài hơn 300 ký tự</span>
