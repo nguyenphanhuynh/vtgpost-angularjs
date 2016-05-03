@@ -43,6 +43,14 @@ app.controller('EditNewsController', function ($rootScope, $scope, $http, $locat
         $(".select2").select2({
             width: null
         });
+        if (jQuery().datepicker) {
+            $('.date-picker').datepicker({
+                rtl: App.isRTL(),
+                orientation: "left",
+                autoclose: true
+            });
+            //$('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
+        }
     });
     var news_id = ($location.search().id) ? parseInt($location.search().id) : 0;
     $scope.title = (news_id > -1) ? 'Sửa tin' : 'Thêm tin mới';

@@ -17,7 +17,6 @@
     </ul>
 </div>
 <!-- END PAGE HEADER-->
-
 <!-- BEGIN SAMPLE FORM PORTLET-->
 <div class="portlet light bordered" ng-controller="EditNewsController">
     <div class="portlet-title">
@@ -78,17 +77,20 @@
                     <label class="col-md-3 control-label"
                            for="content">Content (Nội dung chính)</label>
                     <div class="col-md-9">
-                        <textarea name="content" id="content" ng-model="news.content">{{news.content}}</textarea>
-                        <span ng-show="form.content.$error.maxlength && !form.content.$untouched"
-                              class="help-block text-color-red">
-                           Mô tả không được dài hơn 300 ký tự</span>
+                        <div ta-bind
+                             ng-model="news.content"
+                             ng-bind="news.content"
+                             ng-bind-html="news.content"
+                             name="content"
+                             id="content"
+                        ></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"
                            for="category_id">Category (Mục tin tức)</label>
                     <div class="col-md-5">
-                        <select class="form-control select2"
+                        <select class="form-control"
                                 id="category_id"
                                 name="category_id"
                                 ng-model="news.category_id"
@@ -105,18 +107,25 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"
-                           for="active">Posted Date (Ngày đăng)</label>
+                           for="posted_date">Posted Date (Ngày đăng)</label>
                     <div class="col-md-9">
-                        <input type="checkbox"
-                               class="make-switch"
-                               id="active"
-                               name="active"
-                               ng-model="news.active"
-                               data-on-color="success"
-                               data-off-color="warning"
-                               data-on-text=" Yes "
-                               data-off-text=" No "
-                        />
+                        <div class="input-group input-medium date date-picker"
+                             data-date-format="dd/mm/yyyy" data-date-start-date="+0d">
+                            <input type="text"
+                                   class="form-control"
+                                   readonly
+                                   name="posted_date"
+                                   id="posted_date"
+                                   ng-model="news.posted_date"
+                                   ng-maxlength="16"
+                                   maxlength="16"
+                            />
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                        </div>
                     </div>
                 </div>
             </div>

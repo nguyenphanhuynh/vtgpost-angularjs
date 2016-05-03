@@ -743,7 +743,7 @@ VTGApp.service("services", ['$http', function ($http) {
                 'content': "<p>1.Bảng gi&aacute; CPN trong nước&nbsp;VTG</p><p>2.Bảng gi&aacute; V&acirc;̣n chuy&ecirc;̉n nhanh ti&ecirc;́t ki&ecirc;̣m</p><p>3.Bảng gi&aacute; V&acirc;̣n tải thường</p><p>4.Bảng gi&aacute; qu&ocirc;́c t&ecirc;́</p>",
                 'category_id': '1',
                 'category_name': 'Services - Dịch vụ',
-                'posted_date': ''
+                'posted_date': '13/07/2016'
             }
         ];
     };
