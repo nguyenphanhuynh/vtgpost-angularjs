@@ -471,6 +471,28 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        // Static pages
+        .state('static_page', {
+            url: "/static-page.html",
+            templateUrl: "views/news/static_page.html",
+            data: {pageTitle: ''},
+            controller: "StaticPageController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-summernote/summernote.css',
+                            'assets/global/plugins/bootstrap-summernote/summernote.min.js',
+                            'js/controllers/NewsController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
         // User Profile Dashboard
         .state("profile.dashboard", {
             url: "/dashboard",

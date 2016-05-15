@@ -748,6 +748,11 @@ VTGApp.service("services", ['$http', function ($http) {
         ];
     };
 
+    /**
+     * Get news by NewsId
+     * @param NewsID
+     * @returns {*}
+     */
     obj.getNews = function (NewsID) {
         var tmpArr = this.getNewses();
         var foundIndex = -1;
@@ -769,6 +774,31 @@ VTGApp.service("services", ['$http', function ($http) {
         } else {
             return tmpArr[foundIndex];
         }
+    };
+
+    obj.getStaticPage = function (pageCode) {
+        var page = {
+            'id': 0,
+            'title': '',
+            'abstract': '',
+            'content': "",
+            'category_id': '',
+            'category_name': '',
+            'posted_date': ''
+        };;
+        if(pageCode == 'home') {
+            page.id = 111;
+            page.title = 'Trang Chủ';
+            page.content = '<p>Giới thiệu về C&ocirc;ng ty Chuyển ph&aacute;t nhanh <strong>Vượt Thời Gian</strong></p>' +
+                '<p><strong>Uy T&iacute;n-Ch&iacute;nh X&aacute;c Chất Lượng H&agrave;ng Đầu!!!</strong></p>';
+        } else if(page == 'about'){
+            page.id = 111;
+            page.title = 'Trang giới thiệu';
+            page.content = 'Trang giới thiệu';
+        } else {
+            // return error if need
+        }
+        return page;
     };
 
     /**

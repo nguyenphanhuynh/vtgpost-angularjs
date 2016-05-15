@@ -39,7 +39,7 @@ app.controller('EditNewsController', function ($rootScope, $scope, $http, $locat
         $('input[type="text"]').maxlength({
             limitReachedClass: "label label-danger",
         });
-        $('#content').summernote({height: 300});
+        $scope.htmlcontent = $scope.news.content;
         $(".select2").select2({
             width: null
         });
@@ -60,6 +60,7 @@ app.controller('EditNewsController', function ($rootScope, $scope, $http, $locat
     $scope.newsCategories = services.getNewsCategories();
 
     $scope.submit = function () {
+        console.log($scope.news.content);
         if (news_id == -1) {
             // new news
             var result = services.newNews($scope.news);
@@ -71,6 +72,50 @@ app.controller('EditNewsController', function ($rootScope, $scope, $http, $locat
         } else {
             // update news
             var result = services.updateNews(news_id, $scope.news);
+            if (result.success) {
+                $window.location.href = '#/news-list.html';
+            } else {
+                bootbox.alert(result.message);
+            }
+        }
+    };
+
+    // set sidebar closed and body solid layout mode
+    $rootScope.settings.layout.pageContentWhite = true;
+    $rootScope.settings.layout.pageBodySolid = false;
+    $rootScope.settings.layout.pageSidebarClosed = false;
+
+
+});
+
+
+app.controller('StaticPageController', function ($rootScope, $scope, $http, $location, $window, $timeout, $state, services) {
+    $scope.$on('$viewContentLoaded', function () {
+        // initialize core components
+        $('input[type="text"]').maxlength({
+            limitReachedClass: "label label-danger",
+        });
+    });
+    var page_code = ($location.search().page) ? parseInt($location.search().page) : null;
+    $scope.title = (page_code == 'about') ? 'Cập nhật trang giới thiệu' : (page_code == 'home' ? 'Cập nhật trang chủ' : 'Error title');
+    $scope.buttonText = 'Cập nhật';
+
+    $scope.news = services.getNews(page_code);
+    $scope.newsCategories = services.getNewsCategories();
+
+    $scope.submit = function () {
+        console.log($scope.news.content);
+        if (page_code == -1) {
+            // new news
+            var result = services.newNews($scope.news);
+            if (result.success) {
+                $window.location.href = '#/news-list.html';
+            } else {
+                bootbox.alert(result.message);
+            }
+        } else {
+            // update news
+            var result = services.updateNews(page_code, $scope.news);
             if (result.success) {
                 $window.location.href = '#/news-list.html';
             } else {
