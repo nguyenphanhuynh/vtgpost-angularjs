@@ -471,11 +471,33 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
-        // Static pages
-        .state('static_page', {
-            url: "/static-page.html",
+        // Static home page
+        .state('static_home_page', {
+            url: "/static-home-page.html",
             templateUrl: "views/news/static_page.html",
-            data: {pageTitle: ''},
+            data: {pageTitle: 'Chỉnh sửa trang chủ', pageCode: 'home'},
+            controller: "StaticPageController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            'assets/global/plugins/bootstrap-summernote/summernote.css',
+                            'assets/global/plugins/bootstrap-summernote/summernote.min.js',
+                            'js/controllers/NewsController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
+        // Static about page
+        .state('static_about_page', {
+            url: "/static-about-page.html",
+            templateUrl: "views/news/static_page.html",
+            data: {pageTitle: 'Chỉnh sửa trang giới thiệu', pageCode: 'about'},
             controller: "StaticPageController",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {

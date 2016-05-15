@@ -96,12 +96,12 @@ app.controller('StaticPageController', function ($rootScope, $scope, $http, $loc
             limitReachedClass: "label label-danger",
         });
     });
-    var page_code = ($location.search().page) ? parseInt($location.search().page) : null;
+    var page_code = ($state.current.data.pageCode) ? $state.current.data.pageCode : null;
     $scope.title = (page_code == 'about') ? 'Cập nhật trang giới thiệu' : (page_code == 'home' ? 'Cập nhật trang chủ' : 'Error title');
     $scope.buttonText = 'Cập nhật';
 
-    $scope.news = services.getNews(page_code);
-    $scope.newsCategories = services.getNewsCategories();
+    $scope.news = services.getStaticPage(page_code);
+
 
     $scope.submit = function () {
         console.log($scope.news.content);

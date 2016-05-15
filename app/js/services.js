@@ -785,14 +785,14 @@ VTGApp.service("services", ['$http', function ($http) {
             'category_id': '',
             'category_name': '',
             'posted_date': ''
-        };;
+        };
         if(pageCode == 'home') {
             page.id = 111;
             page.title = 'Trang Chủ';
             page.content = '<p>Giới thiệu về C&ocirc;ng ty Chuyển ph&aacute;t nhanh <strong>Vượt Thời Gian</strong></p>' +
                 '<p><strong>Uy T&iacute;n-Ch&iacute;nh X&aacute;c Chất Lượng H&agrave;ng Đầu!!!</strong></p>';
-        } else if(page == 'about'){
-            page.id = 111;
+        } else if (pageCode == 'about') {
+            page.id = 112;
             page.title = 'Trang giới thiệu';
             page.content = 'Trang giới thiệu';
         } else {
