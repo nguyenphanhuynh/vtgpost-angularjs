@@ -1,0 +1,169 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/employee-list.html">Danh sách nhân viên </a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><a href="#">{{title}}</a></li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered" ng-controller="EditEmployeeController">
+    <div class="portlet-title">
+        <div class="caption font-green">
+            <i class="fa fa-user font-green"></i>
+            <span class="caption-subject bold uppercase"> {{title}}</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form"
+              class="form-horizontal"
+              name="form"
+              id="frm_edit_employee"
+              ng-submit="submit()"
+              novalidate>
+            <input type="hidden"
+                   ng-model="employee.id"
+                   name="id"
+                   id="id"/>
+            <div class="form-body">
+                <div class="form-group note note-warning">
+                    <lable class="control-label"><span class="required">*</span> &nbsp; Bắt buộc nhập</lable>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="fullname">Full name (Tên nhân viên) <span
+                            class="required"> * </span></label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="fullname"
+                               name="fullname"
+                               ng-model="employee.fullname"
+                               ng-maxlength="50"
+                               maxlength="50"
+                               required
+                               placeholder="Customer name - Maximum 50 characters">
+                        <span ng-show="form.fullname.$error.required && !form.fullname.$untouched"
+                              class="help-block text-color-red">
+                            Không được để trống họ tên</span>
+                        <span ng-show="form.fullname.$error.maxlength && !form.fullname.$untouched"
+                              class="help-block text-color-red">
+                            Họ tên không được dài hơn 50 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="username">Username (Tên đăng nhập) <span
+                            class="required"> * </span> </label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="username"
+                               ng-model="employee.username"
+                               name="username" required
+                               placeholder="User name - Maximum 20 characters"
+                               ng-maxlength="20"
+                               maxlength="20"
+                        />
+                        <span class="help-block text-color-red"
+                              ng-show="form.username.$error.required &&!form.username.$untouched">
+                            Không được để trống tên đăng nhập</span>
+                        <span class="help-block text-color-red"
+                              ng-show="form.username.$error.maxlength &&!form.username.$untouched">
+                            Tên đăng nhập không được dài quá 20 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="employee.id==-1">
+                    <label class="col-md-3 control-label"
+                           for="password">Password (Mật khẩu) <span
+                            class="required"> * </span></label>
+                    <div class="col-md-9">
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               name="password"
+                               ng-model="employee.password"
+                               required
+                               placeholder="Mật khẩu phải dài ít nhất 6 ký tự"
+                               ng-minlength="6"
+                        />
+                        <span class="help-block text-color-red"
+                              ng-show="form.password.$error.required && !form.password.$untouched">
+                            Không để để trống mật khẩu</span>
+                        <span class="help-block text-color-red"
+                              ng-show="form.password.$error.minlength && !form.password.$untouched">
+                            Mật khẩu phải dài ít nhất 6 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="employee.id==-1">
+                    <label class="col-md-3 control-label"
+                           for="repeat_password">Repeat pasword (Lập lại mật khẩu) <span
+                            class="required"> * </span></label>
+                    <div class="col-md-9">
+                        <input type="password"
+                               class="form-control"
+                               id="repeat_password"
+                               name="repeat_password"
+                               ng-model="employee.repeat_password"
+                               required
+                               data-password-verify="employee.password"
+                               placeholder="Password must contain at least 6 characters"
+                               ng-minlength="6"
+                        />
+                        <span class="help-block text-color-red"
+                              ng-show="form.repeat_password.required && !form.repeat_password.$untouched">
+                            Nhập lại mật khẩu không được để trống</span>
+                        <span class="help-block text-color-red"
+                              ng-show="form.repeat_password.$error.minlength && !form.repeat_password.$untouched">
+                            Nhập lại mật khẩu phải dài ít nhất 6 ký tự</span>
+                        <span class="help-block text-color-red"
+                              ng-show="form.repeat_password.$error.passwordVerify && !form.repeat_password.$untouched">
+                            Nhập lại mật khẩu phải giống với mật khẩu ở trên</span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="active">Active (Kích hoạt)</label>
+                    <div class="col-md-9">
+                        <input type="checkbox"
+                               class="make-switch"
+                               id="active"
+                               name="active"
+                               ng-model="employee.active"
+                               data-on-color="success"
+                               data-off-color="warning"
+                               data-on-text=" Yes "
+                               data-off-text=" No "
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit"
+                                class="btn green"
+                                ng-disabled="form.$invalid">{{buttonText}}
+                        </button>
+                        <a href="#/employee-list.html"
+                           class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

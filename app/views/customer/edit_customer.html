@@ -1,0 +1,180 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/customer-list.html">Danh sách customer </a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><a href="#">{{title}}</a></li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered" ng-controller="EditCustomerController">
+    <div class="portlet-title">
+        <div class="caption font-green">
+            <i class="fa fa-user font-green"></i>
+            <span class="caption-subject bold uppercase"> {{title}}</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form"
+              class="form-horizontal"
+              name="form"
+              id="frm_edit_customer"
+              ng-submit="submit()"
+              novalidate>
+            <input type="hidden"
+                   ng-model="customer.id"
+                   name="id"
+                   id="id"/>
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="customer_name">Customer name (Tên KH)</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="customer_name"
+                               name="customer_name"
+                               ng-model="customer.customer_name"
+                               ng-maxlength="100"
+                               maxlength="100"
+                               placeholder="Customer name - Maximum 100 characters">
+                        <span ng-show="form.customer_name.$error.maxlength && !form.customer_name.$untouched"
+                              class="help-block text-color-red">
+                           Tên KH không được dài hơn 100 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="address">Customer address (Địa chỉ)</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               id="address"
+                               name="address"
+                               ng-model="customer.address"
+                               ng-maxlength="300"
+                               maxlength="300"
+                               placeholder="Address - Maximum 300 characters">
+                        <span ng-show="form.address.$error.maxlength && !form.address.$untouched"
+                              class="help-block text-color-red">
+                           Customer address không được dài hơn 300 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact_person" class="col-md-3 control-label">Contact Person
+                        (Người liên hệ)</label>
+                    <div class="col-md-4">
+                        <input type="text"
+                               class="form-control"
+                               name="contact_person"
+                               id="contact_person"
+                               ng-model="customer.contact_person"
+                               ng-maxlength="50"
+                               maxlength="50"
+                               placeholder="Contact person name - Maximum 50 characters"
+                        />
+                        <span ng-show="form.contact_person.$error.maxlength && !form.contact_person.$untouched"
+                              class="help-block text-color-red">
+                           Contact Person không được dài hơn 50 ký tự</span>
+                    </div>
+                    <label for="website" class="col-md-2 control-label">Website</label>
+                    <div class="col-md-3">
+                        <input type="text"
+                               class="form-control"
+                               name="website"
+                               id="website"
+                               ng-model="customer.website"
+                               ng-maxlength="100"
+                               maxlength="100"
+                               placeholder="http://"
+                        />
+                        <span ng-show="form.website.$error.maxlength && !form.website.$untouched"
+                              class="help-block text-color-red">
+                           Website không được dài hơn 100 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customer_phone" class="col-md-3 control-label">Contact Number (ĐT)</label>
+                    <div class="col-md-4">
+                        <input type="text"
+                               class="form-control"
+                               name="customer_phone"
+                               id="customer_phone"
+                               ng-model="customer.customer_phone"
+                               ng-maxlength="20"
+                               maxlength="20"
+                               placeholder="Contact number - Maximum 20 characters"
+                        />
+                        <span ng-show="form.customer_phone.$error.maxlength && !form.customer_phone.$untouched"
+                              class="help-block text-color-red">
+                           Contact number không được dài hơn 20 ký tự</span>
+                    </div>
+                    <label for="website" class="col-md-2 control-label">Cellphone (Di động)</label>
+                    <div class="col-md-3">
+                        <input type="text"
+                               class="form-control"
+                               name="customer_mobile"
+                               id="customer_mobile"
+                               ng-model="customer.customer_mobile"
+                               ng-maxlength="20"
+                               maxlength="20"
+                               placeholder="Contact cell phone - Maximum 20 characters"
+                        />
+                        <span ng-show="form.customer_mobile.$error.maxlength && !form.customer_mobile.$untouched"
+                              class="help-block text-color-red">
+                           Cellphone không được dài hơn 20 ký tự</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="customer.logo != ''">
+                    <label class="col-md-3 control-label">&nbsp;</label>
+                    <div class="col-md-9">
+                        <a href="{{customer.logo}}" class="fancy">
+                            <img src="{{customer.logo}}" alt="{{customer.customer_name}}" class="thumbnail2x-img"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"
+                           for="logo">Image (Hình ảnh)</label>
+                    <div class="col-md-9">
+                        <input type="file" id="logo" name="logo" nv-file-select="" accept="image/*"
+                               ng-model="customer.logo"/>
+                        <span class="help-block">
+                            Best image dimensions <strong>166 x 90</strong> (Kích thước logo <strong>166 x 90</strong>)
+Submit
+                        </span>
+                        <span class="help-block">
+                            Support file types: jpeg, jpg, png (Định dạng hình ảnh hỗ trợ: jpeg, jpg, png)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit"
+                                class="btn green"
+                                ng-disabled="form.$invalid">{{buttonText}}
+                        </button>
+                        <a href="#/customer-list.html"
+                           class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
