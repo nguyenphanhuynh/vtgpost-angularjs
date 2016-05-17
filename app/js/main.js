@@ -493,6 +493,25 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
             }
         })
 
+        .state('bill_list', {
+            url: "/bill-list.html",
+            templateUrl: "views/bill/bill_list.html",
+            data: {pageTitle: 'Danh sách vận đơn'},
+            controller: "BillController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'assets/global/plugins/bootbox/bootbox.min.js',
+                            'js/controllers/NewsController.js',
+                        ]
+                    });
+                }],
+            }
+        })
+
         // Static about page
         .state('static_about_page', {
             url: "/static-about-page.html",
