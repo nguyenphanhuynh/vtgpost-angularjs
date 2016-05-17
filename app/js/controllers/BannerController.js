@@ -6,6 +6,10 @@ app.controller('BannerController', function ($rootScope, $scope, $http, $timeout
     });
     $scope.banners = services.getBanners();
 
+    $scope.totalItems = $scope.banners.length;
+    $scope.itemsPerPage = 10; // default is 10
+    $scope.currentPage = 1;
+
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;

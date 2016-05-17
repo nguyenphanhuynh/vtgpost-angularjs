@@ -5,17 +5,19 @@ app.controller('EmployeeController', function ($rootScope, $scope, $http, $timeo
         // initialize core components
     });
 
-    // Get data from server
-    $scope.employees = services.getEmployees();
-
-    $scope.totalItems = $scope.employees.length;
     $scope.itemsPerPage = 10; // default is 10
     $scope.currentPage = 1;
+
+    // Get data from server
+    $scope.employees = services.getEmployees($scope.itemsPerPage, $scope.currentPage);
+
+    $scope.totalItems = $scope.employees.length;
+
+    $scope.pageCount = Math.ceil($scope.totalItems / $scope.itemsPerPage);
     // Complete getting data from server
 
 
     // set sidebar closed and body solid layout mode
-    $scope.pageCount = Math.ceil($scope.totalItems / $scope.itemsPerPage);
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;
     $rootScope.settings.layout.pageSidebarClosed = false;

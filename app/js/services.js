@@ -12,7 +12,7 @@ VTGApp.service("services", ['$http', function ($http) {
      * Get all employees
      * @returns {*[]}
      */
-    obj.getEmployees = function () {
+    obj.getEmployees = function (ppp, currentPage) {
         //return $http.get(serviceBase + 'Employees');
         return [
             {'id': '1', 'fullname': 'Nguyễn Văn An', 'username': 'anguyen', 'active': true},
