@@ -505,7 +505,7 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
                         insertBefore: '#', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'assets/global/plugins/bootbox/bootbox.min.js',
-                            'js/controllers/NewsController.js',
+                            'js/controllers/BillController.js',
                         ]
                     });
                 }],

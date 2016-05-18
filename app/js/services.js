@@ -839,5 +839,23 @@ VTGApp.service("services", ['$http', function ($http) {
         //});
     };
 
+    /**
+     * Get bill list
+     * @param ppp: product per page
+     * @param currentPage: current page
+     * @returns {*[]}
+     */
+    obj.getBills = function (ppp, currentPage) {
+        //return $http.get(serviceBase + 'Employees');
+        return [
+            {'id': '1', 'fullname': 'Nguyễn Văn An', 'username': 'anguyen', 'active': true},
+            {'id': '2', 'fullname': 'Duyen', 'username': 'Duyen', 'active': false},
+            {'id': '3', 'fullname': 'hiền', 'username': 'hiền', 'active': true},
+            {'id': '4', 'fullname': 'Ly', 'username': 'Ly', 'active': true},
+            {'id': '5', 'fullname': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
+            {'id': '6', 'fullname': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
+        ];
+    };
+
     return obj;
 }]);
