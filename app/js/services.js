@@ -106,7 +106,7 @@ VTGApp.service("services", ['$http', function ($http) {
      * @returns {{success: boolean, message: string}}
      */
     obj.changePassword = function (id, password) {
-        alert('delete ' + id);
+        //alert('Change password of UserId:' + id + ' to ' + password);
         return {'success': true, 'message': ''};
     };
 
@@ -855,6 +855,15 @@ VTGApp.service("services", ['$http', function ($http) {
             {'id': '5', 'fullname': 'Nguyễn Thị Hồng', 'username': 'nhong', 'active': true},
             {'id': '6', 'fullname': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true},
         ];
+    };
+
+    /**
+     * Find employee by ID
+     * @param EmployeeID
+     * @returns {{id: string, fullname: string, username: string, active: boolean}}
+     */
+    obj.getCurrentUser = function () {
+        return {'id': '6', 'fullname': 'Nguyễn Quốc Đạt', 'username': 'qdat', 'active': true};
     };
 
     return obj;

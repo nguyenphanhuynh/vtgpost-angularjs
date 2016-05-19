@@ -103,8 +103,8 @@ app.controller('ChangePasswordEmployeeController', function ($rootScope, $scope,
 
     $scope.submit = function () {
         if (employee_id != -1) {
-            // new employee
-            var result = services.newEmployee($scope.employee);
+            // change Password
+            var result = services.changePassword($scope.employee.id, $scope.employee.new_password);
             if (result.success) {
                 $window.location.href = '#/employee-list.html';
             } else {

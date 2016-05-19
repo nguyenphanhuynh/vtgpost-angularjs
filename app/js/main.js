@@ -535,26 +535,24 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
         })
 
         // User Profile Dashboard
-        .state("profile.dashboard", {
-            url: "/dashboard",
-            templateUrl: "views/profile/dashboard.html",
-            data: {pageTitle: 'User Profile'}
-        })
-
-        // User Profile Account
-        .state("profile.account", {
+        .state("profile_dashboard", {
             url: "/account",
             templateUrl: "views/profile/account.html",
-            data: {pageTitle: 'User Account'}
+            data: {pageTitle: 'User Profile'},
+            controller: "ProfileDashboardController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'VTGApp',
+                        insertBefore: '#',
+                        files: [
+                            'assets/global/plugins/bootbox/bootbox.min.js',
+                            'js/controllers/ProfileController.js',
+                        ]
+                    })
+                }]
+            }
         })
-
-        // User Profile Help
-        .state("profile.help", {
-            url: "/help",
-            templateUrl: "views/profile/help.html",
-            data: {pageTitle: 'User Help'}      
-        })
-
 }]);
 
 /* Init global settings and run the app */
