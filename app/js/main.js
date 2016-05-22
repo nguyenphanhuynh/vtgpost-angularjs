@@ -558,21 +558,24 @@ VTGApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,
 
         // Login Controller
         .state("login", {
+            //abstract:true,
             url: "/login",
             templateUrl: "modules/Authentication/views/login.html",
-            data: {pageTitle: 'Authentication'},
+            //data: {pageTitle: 'Authentication'},
             controller: "LoginController",
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'VTGApp',
-                        insertBefore: '#',
-                        files: [
-                            'modules/Authentication/controllers.js',
-                        ]
-                    })
-                }]
-            }
+            public: true,
+            login: true,
+            //resolve: {
+            //    deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+            //        return $ocLazyLoad.load({
+            //            name: 'VTGApp',
+            //            insertBefore: '#',
+            //            files: [
+            //                'modules/Authentication/controllers.js',
+            //            ]
+            //        })
+            //    }]
+            //}
         })
 
 }]);
