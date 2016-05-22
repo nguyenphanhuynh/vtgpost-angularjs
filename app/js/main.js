@@ -144,7 +144,7 @@ VTGApp.controller('FooterController', ['$scope', function ($scope) {
 /* Setup Rounting For All Pages */
 VTGApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard.html");
+    $urlRouterProvider.otherwise("/login");
 
     $stateProvider
 
@@ -583,16 +583,16 @@ VTGApp.run(["$rootScope", "settings", "$state", '$location', '$cookieStore', '$h
         $rootScope.$state = $state; // state to be accessed from view
         $rootScope.$settings = settings; // state to be accessed from view
 
-        //// keep user logged in after page refresh
-        //$rootScope.globals = $cookieStore.get('globals') || {};
-        //if ($rootScope.globals.currentUser) {
-        //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-        //}
-        //
-        //$rootScope.$on('$locationChangeStart', function (event, next, current) {
-        //    // redirect to login page if not logged in
-        //    if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-        //        $location.path('/login');
-        //    }
-        //});
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+        }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                $location.path('/login');
+            }
+        });
 }]);
