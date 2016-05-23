@@ -144,7 +144,7 @@ VTGApp.controller('FooterController', ['$scope', function ($scope) {
 /* Setup Rounting For All Pages */
 VTGApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/dashboard.html");
 
     $stateProvider
 
