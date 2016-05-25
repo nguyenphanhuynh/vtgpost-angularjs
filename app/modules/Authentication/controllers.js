@@ -10,6 +10,9 @@ angular.module('Authentication')
                 $rootScope.settings.layout.pageBodySolid = false;
                 $rootScope.settings.layout.pageSidebarClosed = true;
 
+                $rootScope.settings.layout.isLogged = false;
+                $rootScope.settings.layout.bodyLoginClass = 'login';
+
                 // reset login status
                 AuthenticationService.ClearCredentials();
 
@@ -19,9 +22,12 @@ angular.module('Authentication')
                         if (response.success) {
                             AuthenticationService.SetCredentials($scope.username, $scope.password);
                             $location.path('/dashboard.html');
+                            $rootScope.settings.layout.isLogged = true;
+                            $rootScope.settings.layout.bodyLoginClass = '';
                         } else {
                             $scope.error = response.message;
                             $scope.dataLoading = false;
+
                         }
                     });
                 };
